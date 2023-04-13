@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "JetPack"
+include ':moduledemo:app'
+include ':moduledemo:jetpackdemo'
+include ':moduledemo:changeskin'
+include ':moduledemo:themeRes'
