@@ -71,8 +71,7 @@ class SkinManager(private val application: Application) : Observable() {
             skinResource = SkinResource.getInstance()
         }
 
-        //TODO 干嘛用的？
-        //skinResource.resume();
+        skinResource?.resume()
 
         if (skinState == State.ORIGIN || isNotify || isNewPath) {
             skinState = State.SKIN

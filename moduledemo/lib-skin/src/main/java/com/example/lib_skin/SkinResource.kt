@@ -92,6 +92,16 @@ class SkinResource(private val application: Application, private val path: Strin
         resources = application.resources
     }
 
+    private fun isResume(): Boolean {
+        return resources == application.resources
+    }
+
+    fun resume() {
+        if (isResume()) {
+            resources = createSkinResource(path)
+        }
+    }
+
     /**
      * 获取当前apk包名
      */
