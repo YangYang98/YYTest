@@ -12,11 +12,9 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.permissionx.guolindev.PermissionX
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -120,13 +118,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initPermission(permissions: List<String>) {
-        PermissionX.init(this).permissions(
+        /*PermissionX.init(this).permissions(
             permissions
         ).request { allGranted, _, _ ->
             if (!allGranted) {
                 Toast.makeText(this, "没有权限", Toast.LENGTH_SHORT).show()
             }
-        }
+        }*/
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val uri = Uri.parse("package:${BuildConfig.APPLICATION_ID}")

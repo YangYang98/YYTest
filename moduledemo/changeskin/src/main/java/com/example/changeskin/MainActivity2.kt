@@ -3,7 +3,7 @@ package com.example.changeskin
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.permissionx.guolindev.PermissionX
+import com.hjq.permissions.XXPermissions
 
 class MainActivity2 : BasicActivity() {
 
@@ -39,9 +39,10 @@ class MainActivity2 : BasicActivity() {
     }
 
     private fun initPermission(permissions: List<String>) {
-        PermissionX.init(this).permissions(
-            permissions
-        ).request { allGranted, _, _ ->
+        XXPermissions.with(this).permission(ArrayList<String>().apply {
+            add(android.Manifest.permission.MANAGE_EXTERNAL_STORAGE)
+            //add(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }).request { permissions, allGranted ->
             if (!allGranted) {
                 Toast.makeText(this, "没有权限", Toast.LENGTH_SHORT).show()
             }
