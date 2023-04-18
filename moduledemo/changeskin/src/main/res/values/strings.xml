@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">changeskin</string>
     <string name="hello_skin">你好皮肤!</string>
+    <string name="global_re_skin">换肤(SKIN)</string>
+    <string name="global_reset">重制(ORIGIN)</string>
+    <string name="global_custom_view_text">换肤前</string>
 </resources>
