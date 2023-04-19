@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">lib-mult-language</string>
+    <string name="common_auto">自动</string>
+    <string name="common_phone">手机</string>
+    <string name="common_email">邮箱</string>
+    <string name="common_no_data">暂无数据</string>
+    <string name="common_one">1</string>
+    <string name="common_two">2</string>
+    <string name="common_three">3</string>
+    <string name="common_four">4</string>
+    <string name="common_17">/3</string>
+    <string name="common_21">-</string>
+    <string name="common_22">--</string>
+    <string name="common_skin_setting">主题设置</string>
+    <string name="common_language_setting">语言设置</string>
+    <string name="common_amount">金额</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_ok">确定</string>
+</resources>
