@@ -94,6 +94,12 @@ task sortLanguageValues() {
 }
 
 def doSortLanguageValues() {
+    def basicPath = "/src/main/res/values/strings_data.xml" // 以这个为基准
+
+    def res = [
+            "/src/main/res/values-en-rUS/strings_data.xml",
+            "/src/main/res/values-zh-rCN/strings_data.xml"
+    ]
 
     Node basicNode = new XmlParser().parse(file(dirPath(basicPath)))
     // 找到所有的String node
@@ -474,7 +480,7 @@ task excelToValuesxx() {
         println(map)
 
 
-        def orgRootPath = "/Users/yangyang/AndroidStudioProjects/Demo/moduledemo/changeskin/src/main/res"
+        def orgRootPath = "/Users/yangyang/AndroidStudioProjects/Demo/moduledemo/lib-mult-language/src/main/res"
         map.each { entry ->
             def valueDirName = entry.key
             File curFilePath = new File(orgRootPath, valueDirName)

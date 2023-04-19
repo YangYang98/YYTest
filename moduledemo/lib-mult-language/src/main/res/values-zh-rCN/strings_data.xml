@@ -1,20 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">lib-mult-language</string>
-    <string name="common_auto">自动</string>
-    <string name="common_phone">手机</string>
-    <string name="common_email">邮箱</string>
-    <string name="common_no_data">暂无数据</string>
-    <string name="common_one">1</string>
-    <string name="common_two">2</string>
-    <string name="common_three">3</string>
-    <string name="common_four">4</string>
-    <string name="common_17">/3</string>
-    <string name="common_21">-</string>
-    <string name="common_22">--</string>
-    <string name="common_skin_setting">主题设置</string>
-    <string name="common_language_setting">语言设置</string>
-    <string name="common_amount">金额</string>
-    <string name="common_cancel">取消</string>
-    <string name="common_ok">确定</string>
+  <string name="account_cancel">继续注册</string>
+  <string name="account_quit">现在退出</string>
+  <string name="common_17">/3</string>
+  <string name="common_21">-</string>
+  <string name="common_22">--</string>
+  <string name="common_24h_high">24小时最高</string>
+  <string name="common_24h_low">24小时最低</string>
+  <string name="common_24h_volume">24小时成交量</string>
+  <string name="common_24h_volume_extra">24 小时成交量(%s)</string>
+  <string name="common_2_step_disabled_done">已成功禁用两步验证。</string>
+  <string name="common_account">帐户</string>
 </resources>
