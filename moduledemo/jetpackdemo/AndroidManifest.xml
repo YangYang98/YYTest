@@ -21,6 +21,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name="java.com.example.jetpackdemo.ui.activity.DataBindingBaseActivity"
+            android:exported="false"
+
+            >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>
