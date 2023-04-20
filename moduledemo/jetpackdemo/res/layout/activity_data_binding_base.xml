@@ -16,18 +16,20 @@
       android:gravity="center"
       tools:context="java.com.example.jetpackdemo.ui.activity.DataBindingBaseActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hhhhhhh"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <include
         layout="@layout/layout_included"
         app:config="@{config}" />
+
+    <Button
+        android:id="@+id/btn_dataBindingAdapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DataBindingAdapter"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
   </LinearLayout>
 </layout>
