@@ -7,6 +7,9 @@
     <variable
         name="config"
         type="java.com.example.jetpackdemo.data.Config" />
+    <variable
+        name="eventHandle"
+        type="java.com.example.jetpackdemo.listener.EventHandleListener" />
   </data>
 
   <LinearLayout
@@ -26,6 +29,19 @@
         android:layout_height="wrap_content"
         android:text="DataBindingAdapter"
         android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/btn_two_way_binding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TwoWayBinding"
+        android:textAllCaps="false"
+        android:onClick="@{eventHandle.btnTwoWayBindingOnClick}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
