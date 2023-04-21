@@ -8,6 +8,10 @@ import com.example.jetpackdemo.databinding.ActivityTwoWayBindingBinding
 import java.com.example.jetpackdemo.data.User
 import java.com.example.jetpackdemo.model.UserViewModel
 
+/**
+ * 双向绑定BaseObservable
+ */
+
 class TwoWayBindingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
