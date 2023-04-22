@@ -26,7 +26,8 @@
             android:id="@+id/shuangxiang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{StringUtils.test(config.baseName)}"
+            android:textAllCaps="false"
+            android:text="@{StringUtils.test(config.jetpackBaseName)}"
             android:onClick="@{eventHandle.btnOnClick}"
             />
 
