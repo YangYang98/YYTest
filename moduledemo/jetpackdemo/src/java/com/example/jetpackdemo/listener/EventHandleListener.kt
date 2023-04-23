@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import java.com.example.jetpackdemo.ui.activity.*
+import java.com.example.jetpackdemo.ui.activity.room.RoomBaseActivity
 
 
 /**
@@ -11,7 +12,7 @@ import java.com.example.jetpackdemo.ui.activity.*
  */
 class EventHandleListener constructor(val context: Context) {
 
-    fun btnOnClick(view: View) {
+    fun btnDataBindingBaseOnClick(view: View) {
 
         context.startActivity(Intent(context, DataBindingBaseActivity::class.java))
     }
@@ -30,5 +31,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnDBAndVMAndLDOnClick(view: View) {
         context.startActivity(Intent(context, DBAndVMAndLDDemoActivity::class.java))
+    }
+
+    fun btnRoomBaseOnClick(view: View) {
+        context.startActivity(Intent(context, RoomBaseActivity::class.java))
     }
 }

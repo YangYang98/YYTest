@@ -8,5 +8,7 @@ class Config {
 
     var baseName = "Base"
     var jetpackBaseName = "JetpackBaseName"
+    var dataBindingBase = "DataBindingBase"
+    var roomBase = "RoomBase"
     var includedName = "被Include"
 }

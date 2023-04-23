@@ -42,11 +42,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11
     }
 }
 
@@ -64,6 +64,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"// LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"// Lifecycle
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+
+    def room_version = "2.5.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     implementation "com.squareup.picasso:picasso:2.8"
 }

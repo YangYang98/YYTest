@@ -23,12 +23,19 @@
         >
 
         <Button
-            android:id="@+id/shuangxiang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="@{StringUtils.test(config.jetpackBaseName)}"
-            android:onClick="@{eventHandle.btnOnClick}"
+            android:text="@{StringUtils.test(config.dataBindingBase)}"
+            android:onClick="@{eventHandle.btnDataBindingBaseOnClick}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@{StringUtils.test(config.roomBase)}"
+            android:onClick="@{eventHandle.btnRoomBaseOnClick}"
             />
 
     </LinearLayout>
