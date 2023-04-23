@@ -57,5 +57,14 @@
         android:textAllCaps="false"
         android:onClick="@{eventHandle.btnRecycleViewBindingOnClick}"
         />
+
+    <Button
+        android:id="@+id/btn_databinding_viewmodel_livedata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Databinding+Viewmodel+Livedata"
+        android:textAllCaps="false"
+        android:onClick="@{eventHandle.btnDBAndVMAndLDOnClick}"
+        />
   </LinearLayout>
 </layout>

@@ -3,10 +3,7 @@ package java.com.example.jetpackdemo.listener
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import java.com.example.jetpackdemo.ui.activity.DataBindingBaseActivity
-import java.com.example.jetpackdemo.ui.activity.RecycleViewBindingActivity
-import java.com.example.jetpackdemo.ui.activity.TwoWayBinding2Activity
-import java.com.example.jetpackdemo.ui.activity.TwoWayBindingActivity
+import java.com.example.jetpackdemo.ui.activity.*
 
 
 /**
@@ -29,5 +26,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnRecycleViewBindingOnClick(view: View) {
         context.startActivity(Intent(context, RecycleViewBindingActivity::class.java))
+    }
+
+    fun btnDBAndVMAndLDOnClick(view: View) {
+        context.startActivity(Intent(context, DBAndVMAndLDDemoActivity::class.java))
     }
 }
