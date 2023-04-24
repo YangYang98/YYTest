@@ -18,7 +18,7 @@ import java.com.example.jetpackdemo.interfaces.StudentDao
  * Create by Yang Yang on 2023/4/23
  */
 
-@Database(entities = [Student::class], version = 4, exportSchema = false)
+@Database(entities = [Student::class], version = 3, exportSchema = true)
 abstract class MyDatabase : RoomDatabase() {
 
     companion object {
