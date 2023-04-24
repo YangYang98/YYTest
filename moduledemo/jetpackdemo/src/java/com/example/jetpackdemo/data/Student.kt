@@ -25,8 +25,8 @@ class Student {
     @ColumnInfo(name = "age", typeAffinity = ColumnInfo.INTEGER)
     var age = 0
 
-    @ColumnInfo(name = "sex", typeAffinity = ColumnInfo.INTEGER)
-    var sex = 0
+    @ColumnInfo(name = "sex", typeAffinity = ColumnInfo.TEXT)
+    var sex: String? = null
 
     @ColumnInfo(name = "grade", typeAffinity = ColumnInfo.INTEGER)
     var grade = 0
