@@ -17,7 +17,7 @@ import java.com.example.jetpackdemo.interfaces.StudentDao
  */
 
 @Database(entities = [Student::class], version = 1, exportSchema = false)
-abstract class MyDatabase2 : RoomDatabase() {
+abstract class MyDatabase : RoomDatabase() {
 
     companion object {
         //private const val DATABASE_NAME = "my_database.db"

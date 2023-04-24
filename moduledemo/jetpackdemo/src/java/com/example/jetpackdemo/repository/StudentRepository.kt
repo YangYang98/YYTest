@@ -16,7 +16,7 @@ import java.com.example.jetpackdemo.ui.activity.room.MyDatabase
  */
 class StudentRepository constructor(val context: Context) {
 
-    val studentDao: StudentDao = MyDatabase.getInstance(context).studentDao
+    val studentDao: StudentDao = MyDatabase.getInstance(context).getStudentDao()
 
     fun insertStudents(vararg students: Student) {
         InsertStudentTask(studentDao).execute(*students)
