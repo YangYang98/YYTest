@@ -23,6 +23,13 @@ class DeleteStudentTask(private val studentDao: StudentDao?) : AsyncTask<Student
     }
 }
 
+class DeleteAllStudentsTask(private val studentDao: StudentDao?) : AsyncTask<Void, Void, Void>() {
+    override fun doInBackground(vararg params: Void?): Void? {
+        studentDao?.deleteAllStudents()
+        return null
+    }
+}
+
 class UpdateStudentTask(private val studentDao: StudentDao?) : AsyncTask<Student, Void, Void>() {
     override fun doInBackground(vararg params: Student): Void? {
         studentDao?.updateStudent(*params)

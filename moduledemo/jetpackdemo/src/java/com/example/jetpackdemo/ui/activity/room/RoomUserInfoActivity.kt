@@ -1,26 +1,25 @@
 package java.com.example.jetpackdemo.ui.activity.room
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jetpackdemo.R
 import com.example.jetpackdemo.databinding.ActivityRoomUserInfoBinding
 import com.example.jetpackdemo.databinding.ListItemUserInfoCrudBinding
 import java.com.example.jetpackdemo.data.Student
-import java.com.example.jetpackdemo.interfaces.StudentDao
 import java.com.example.jetpackdemo.listener.RoomEventHandleListener
-import java.com.example.jetpackdemo.tasks.GetAllStudentTask
+import java.com.example.jetpackdemo.model.RoomStudentViewModel
 
 /**
  * 学生信息CRUD
  */
 
 class RoomUserInfoActivity : AppCompatActivity() {
-    private lateinit var studentDao: StudentDao
     private lateinit var adapter: StudentInfoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,17 +29,24 @@ class RoomUserInfoActivity : AppCompatActivity() {
         adapter = StudentInfoAdapter(getStudents())
         binding.recyclerView.adapter = adapter
 
-        val database = MyDatabase.getInstance(this)
-        studentDao = database.getStudentDao()
-        binding.eventHandle = RoomEventHandleListener(this).apply {
-            this.studentDao = this@RoomUserInfoActivity.studentDao
+        val viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(application))[RoomStudentViewModel::class.java]
+        viewModel.getAllStudents().observe(this) {
+            adapter.students = it
+            adapter.notifyDataSetChanged()
         }
-        binding.btnQuery.setOnClickListener {
+        binding.eventHandle = RoomEventHandleListener(this).apply {
+            this.viewModel = viewModel
+        }
+        /*binding.btnQuery.setOnClickListener {
             GetAllStudentTask(studentDao, {
                 adapter.students = it
             }, {
                 adapter.notifyDataSetChanged()
             }) .execute()
+        }*/
+
+        binding.btnClear.setOnClickListener {
+            viewModel.deleteAllStudents()
         }
 
     }
