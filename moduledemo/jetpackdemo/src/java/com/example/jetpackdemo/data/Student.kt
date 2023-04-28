@@ -25,11 +25,11 @@ class Student {
     @ColumnInfo(name = "age", typeAffinity = ColumnInfo.INTEGER)
     var age = 0
 
-    @ColumnInfo(name = "sex", typeAffinity = ColumnInfo.TEXT)
+    /*@ColumnInfo(name = "sex", typeAffinity = ColumnInfo.TEXT)
     var sex: String? = null
 
     @ColumnInfo(name = "grade", typeAffinity = ColumnInfo.INTEGER)
-    var grade = 0
+    var grade = 0*/
 
     constructor(id: Int, name: String?, age: Int) {
         this.id = id

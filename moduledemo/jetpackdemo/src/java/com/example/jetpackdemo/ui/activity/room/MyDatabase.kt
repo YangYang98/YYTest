@@ -43,6 +43,7 @@ abstract class MyDatabase : RoomDatabase() {
                     //.allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+                    .createFromAsset("prestudent.db")
                     .build()
             }
             return instance!!
