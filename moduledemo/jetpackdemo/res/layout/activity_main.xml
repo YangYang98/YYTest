@@ -38,5 +38,13 @@
             android:onClick="@{eventHandle.btnRoomBaseOnClick}"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@{StringUtils.test(config.navigationBase)}"
+            android:onClick="@{eventHandle.btnNavigationBaseOnClick}"
+            />
+
     </LinearLayout>
 </layout>
