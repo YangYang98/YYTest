@@ -28,8 +28,15 @@ class NavigationHomeFragment : Fragment() {
 
         val button = view?.findViewById<Button>(R.id.button_home)
         button?.setOnClickListener {
+            /*val args = Bundle().apply {
+                putString("userName", "yangyang")
+            }*/
+
+            val args = NavigationHomeFragmentArgs.Builder()
+                //.setUserName("yang-yang")
+                .build().toBundle()
             val navController = Navigation.findNavController(it)
-            navController.navigate(R.id.action_homeFragment_to_detailFragment)
+            navController.navigate(R.id.action_homeFragment_to_detailFragment, args)
         }
 
     }

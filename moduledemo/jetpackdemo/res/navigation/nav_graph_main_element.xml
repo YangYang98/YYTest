@@ -16,6 +16,11 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="yangyang"
+            />
     </fragment>
 
     <fragment
