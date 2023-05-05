@@ -1,6 +1,7 @@
 package com.yang.study_coroutine.ui
 
 import android.app.ProgressDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,9 +9,7 @@ import android.widget.TextView
 import com.yang.study_coroutine.R
 import com.yang.study_coroutine.api.ApiClient
 import com.yang.study_coroutine.api.WanAndroidApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class CoroutineActivity : AppCompatActivity() {
 
@@ -27,6 +26,10 @@ class CoroutineActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_request).setOnClickListener {
             startRequest()
+        }
+
+        findViewById<Button>(R.id.btn_three_login).setOnClickListener {
+            startThreeRequest()
         }
     }
 
@@ -45,6 +48,69 @@ class CoroutineActivity : AppCompatActivity() {
 
             content.text = loginResult.data.toString()
             progressDialog?.dismiss()
+        }
+    }
+
+    private fun startThreeRequest() {
+        progressDialog = ProgressDialog(this)
+        progressDialog?.setTitle("请求中....")
+        progressDialog?.show()
+
+
+        GlobalScope.launch(Dispatchers.Main) {
+            var serverResponseInfo = requestLoadUser()
+            content.text = serverResponseInfo
+            content.setTextColor(Color.RED)
+            serverResponseInfo = requestLoadUserAssets()
+            content.text = serverResponseInfo
+            content.setTextColor(Color.GREEN)
+            serverResponseInfo = requestLoadUserAssetsDetail()
+            content.text = serverResponseInfo
+            content.setTextColor(Color.BLUE)
+            progressDialog?.dismiss()
+        }
+
+    }
+
+    private suspend fun requestLoadUser(): String {
+        val isLoadSuccess = true
+
+        withContext(Dispatchers.IO) {
+            delay(6000)
+        }
+
+        return if (isLoadSuccess) {
+            "加载[用户数据]成功"
+        } else {
+            "加载[用户数据]失败"
+        }
+    }
+
+    private suspend fun requestLoadUserAssets(): String {
+        val isLoadSuccess = true
+
+        withContext(Dispatchers.IO) {
+            delay(3000)
+        }
+
+        return if (isLoadSuccess) {
+            "加载[用户资产数据]成功"
+        } else {
+            "加载[用户资产数据]失败"
+        }
+    }
+
+    private suspend fun requestLoadUserAssetsDetail(): String {
+        val isLoadSuccess = true
+
+        withContext(Dispatchers.IO) {
+            delay(1000)
+        }
+
+        return if (isLoadSuccess) {
+            "加载[用户资产详情]成功"
+        } else {
+            "加载[用户资产详情]失败"
         }
     }
 }

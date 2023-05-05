@@ -21,8 +21,16 @@
         android:id="@+id/btn_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="200dp"
         android:text="请求"
+        />
+
+    <Button
+        android:id="@+id/btn_three_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="模拟三次登录(回调地狱)"
         />
 
 </LinearLayout>

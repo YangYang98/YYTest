@@ -1,10 +1,12 @@
 package com.yang.study_coroutine.ui
 
 import android.app.ProgressDialog
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.Message
 import android.widget.Button
 import android.widget.TextView
 import com.yang.study_coroutine.R
@@ -36,6 +38,10 @@ class TraditionActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_request).setOnClickListener {
             startRequest()
         }
+
+        findViewById<Button>(R.id.btn_three_login).setOnClickListener {
+            startThreeRequest()
+        }
     }
 
     private fun startRequest() {
@@ -63,4 +69,139 @@ class TraditionActivity : AppCompatActivity() {
             }
         }.start()
     }
+
+    private fun startThreeRequest() {
+        progressDialog = ProgressDialog(this)
+        progressDialog?.setTitle("请求中....")
+        progressDialog?.show()
+
+        requestLogin(object : ResponseCallback {
+            override fun responseSuccess(serverResponseInfo: String) {
+                val handler: Handler = object : Handler(Looper.getMainLooper()) {
+                    override fun handleMessage(msg: Message) {
+                        super.handleMessage(msg)
+
+                        content.text = serverResponseInfo
+                        content.setTextColor(Color.RED)
+                    }
+                }
+                handler.sendEmptyMessage(0)
+
+                requestLoadUserAssets(object : ResponseCallback {
+                    override fun responseSuccess(serverResponseInfo: String) {
+
+                        val handler: Handler = object : Handler(Looper.getMainLooper()) {
+                            override fun handleMessage(msg: Message) {
+                                super.handleMessage(msg)
+
+                                content.text = serverResponseInfo
+                                content.setTextColor(Color.GREEN)
+                            }
+                        }
+                        handler.sendEmptyMessage(0)
+
+                        requestLoadUserAssetsDetail(object : ResponseCallback {
+                            override fun responseSuccess(serverResponseInfo: String) {
+                                val handler: Handler = object : Handler(Looper.getMainLooper()) {
+                                    override fun handleMessage(msg: Message) {
+                                        super.handleMessage(msg)
+
+                                        content.text = serverResponseInfo
+                                        content.setTextColor(Color.BLUE)
+                                        progressDialog?.dismiss()
+                                    }
+                                }
+                                handler.sendEmptyMessage(0)
+                            }
+
+                            override fun responseFail(serverResponseInfo: String) {
+                                progressDialog?.dismiss()
+                            }
+                        })
+                    }
+
+                    override fun responseFail(serverResponseInfo: String) {
+                        progressDialog?.dismiss()
+                    }
+                })
+            }
+
+            override fun responseFail(serverResponseInfo: String) {
+                progressDialog?.dismiss()
+            }
+        })
+    }
+
+    private fun requestLogin(responseCallback: ResponseCallback) {
+        val isLoadSuccess = true
+
+        object : Thread() {
+            override fun run() {
+                super.run()
+
+                try {
+                    sleep(3000)
+
+                    if (isLoadSuccess) {
+                        responseCallback.responseSuccess("加载[用户数据]成功")
+                    } else {
+                        responseCallback.responseSuccess("加载[用户数据]失败")
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }.start()
+    }
+
+    private fun requestLoadUserAssets(responseCallback: ResponseCallback) {
+        val isLoadSuccess = true
+
+        object : Thread() {
+            override fun run() {
+                super.run()
+
+                try {
+                    sleep(3000)
+
+                    if (isLoadSuccess) {
+                        responseCallback.responseSuccess("加载[用户资产数据]成功")
+                    } else {
+                        responseCallback.responseSuccess("加载[用户资产数据]失败")
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }.start()
+    }
+
+    private fun requestLoadUserAssetsDetail(responseCallback: ResponseCallback) {
+        val isLoadSuccess = true
+
+        object : Thread() {
+            override fun run() {
+                super.run()
+
+                try {
+                    sleep(3000)
+
+                    if (isLoadSuccess) {
+                        responseCallback.responseSuccess("加载[用户资产详情]成功")
+                    } else {
+                        responseCallback.responseSuccess("加载[用户资产详情]失败")
+                    }
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }.start()
+    }
+}
+
+interface ResponseCallback {
+
+    fun responseSuccess(serverResponseInfo: String)
+
+    fun responseFail(serverResponseInfo: String)
 }
