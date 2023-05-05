@@ -25,4 +25,17 @@ interface WanAndroidApi {
         @Field("username") userName: String, @Field("password") password: String,
         @Field("repassword") repassword: String
     ) : Call<LoginRegisterResponseWrapper<LoginRegisterResponse>>
+
+    @POST("/user/login")
+    @FormUrlEncoded
+    suspend fun loginCoroutine (
+        @Field("username") userName: String, @Field("password") password: String
+    ) : LoginRegisterResponseWrapper<LoginRegisterResponse>
+
+    @POST("/user/register")
+    @FormUrlEncoded
+    suspend fun registerCoroutine (
+        @Field("username") userName: String, @Field("password") password: String,
+        @Field("repassword") repassword: String
+    ) : LoginRegisterResponseWrapper<LoginRegisterResponse>
 }
