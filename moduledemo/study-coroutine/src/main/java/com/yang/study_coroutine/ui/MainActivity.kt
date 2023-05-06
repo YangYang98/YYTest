@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_coroutine).setOnClickListener {
             startActivity(Intent(this, CoroutineActivity::class.java))
         }
+
+        findViewById<Button>(R.id.btn_coroutine_mvvm).setOnClickListener {
+            startActivity(Intent(this, CoroutineMVVMActivity::class.java))
+        }
     }
 }

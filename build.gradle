@@ -13,3 +13,19 @@ plugins {
     //id 'androidx.navigation.safeargs' version '2.5.3' apply false
     //id 'androidx.navigation.safeargs' version '2.4.2' apply false
 }
+
+/*
+ext {
+    lifecycle_version = "2.6.1"
+    retrofit_version = "2.9.0"
+
+    libs = [
+            viewmodel : ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"),
+            livedata : ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"),
+            runtime : ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"),
+
+            retrofit : ("com.squareup.retrofit2:retrofit:$retrofit_version"),
+            converter-gson: ("com.squareup.retrofit2:converter-gson:$retrofit_version"),
+            converter-moshi: ("com.squareup.retrofit2:converter-moshi:$retrofit_version"),
+    ]
+}*/
