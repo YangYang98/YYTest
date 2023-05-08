@@ -443,7 +443,7 @@ task stringToExcel() {
 task excelToValuesxx() {
     setGroup("excel_to_xml")
     doLast {
-        def excelPath = "/Users/yangyang/Desktop/temp/111111111/Book1.xls"
+        def excelPath = "/Users/yangyang/Desktop/temp/111111111/YAXAndroid.xlsx"
 
         // 读取Excel
         Workbook workbook = WorkbookFactory.create(new File(excelPath))
@@ -485,7 +485,7 @@ task excelToValuesxx() {
             def valueDirName = entry.key
             File curFilePath = new File(orgRootPath, valueDirName)
             curFilePath.mkdirs()
-            File xmlFilePath = new File(curFilePath, valueDirName + ".xml")
+            File xmlFilePath = new File(curFilePath, "strings_data.xml")
             println("xml文件路径:" + xmlFilePath.getAbsolutePath())
             Node orgNode
             if (!xmlFilePath.exists()) {
