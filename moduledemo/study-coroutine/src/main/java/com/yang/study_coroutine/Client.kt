@@ -32,6 +32,14 @@ fun printlnThread(any: Any) {
     println("$any:\tthread:${Thread.currentThread().name}")
 }
 
+fun <T> printlnCC(key: Any, cc: CancellableContinuation<T>) {
+    println(
+        "$key\tCancellableContinuation状态:${if (cc.isActive) "活跃" else "未活跃"}\t" +
+                "${if (cc.isCancelled) "取消" else "未取消" }\t" +
+                if (cc.isCompleted) "完成" else "未完成"
+    )
+}
+
 fun printJob(job: Job) {
     println(
         "isActive:${if (job.isActive) "活跃" else "非活跃"}" +

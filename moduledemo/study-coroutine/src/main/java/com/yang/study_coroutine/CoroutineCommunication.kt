@@ -139,7 +139,7 @@ fun main24() = runBlocking {
  * 2.2 actor
  */
 @OptIn(ObsoleteCoroutinesApi::class)
-fun main() = runBlocking {
+fun main25() = runBlocking {
 
     val sendChannel = actor<String> {
         println("actor result: ${receive()}")
