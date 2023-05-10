@@ -2,13 +2,15 @@ package com.yang.study_coroutine.ui
 
 import android.app.ProgressDialog
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.yang.study_coroutine.R
 import com.yang.study_coroutine.api.ApiClient
+import com.yang.study_coroutine.api.GitHubServiceApi
 import com.yang.study_coroutine.api.WanAndroidApi
+import com.yang.study_coroutine.data.User
 import kotlinx.coroutines.*
 
 class CoroutineActivity : AppCompatActivity() {
@@ -16,6 +18,8 @@ class CoroutineActivity : AppCompatActivity() {
     var progressDialog: ProgressDialog? = null
 
     private lateinit var content: TextView
+
+    private val model = ApiClient.instance.instanceRetrofit(GitHubServiceApi::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +29,7 @@ class CoroutineActivity : AppCompatActivity() {
         content = findViewById(R.id.tv_content)
 
         findViewById<Button>(R.id.btn_request).setOnClickListener {
-            startRequest()
+            startRequest2()
         }
 
         findViewById<Button>(R.id.btn_three_login).setOnClickListener {
@@ -113,4 +117,21 @@ class CoroutineActivity : AppCompatActivity() {
             "加载[用户资产详情]失败"
         }
     }
+
+    private fun startRequest2() {
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                showUser(model.getUserAsync("aaaa").await())
+
+                showUser(model.getUser("aaaa"))
+            } catch (e: Exception) {
+                //showError()
+            }
+        }
+    }
+
+    private fun showUser(user: User) {
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.yang.study_coroutine.api
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -31,6 +32,7 @@ class ApiClient {
             .baseUrl("https://www.wanandroid.com")
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
