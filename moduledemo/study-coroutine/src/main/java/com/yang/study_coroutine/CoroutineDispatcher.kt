@@ -2,7 +2,9 @@ package com.yang.study_coroutine
 
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
+import kotlin.concurrent.thread
 import kotlin.coroutines.*
+import kotlin.coroutines.intrinsics.*
 
 
 /**
@@ -61,7 +63,7 @@ class MyContinuation2<T>(val continuation: Continuation<T>): Continuation<T> {
     }
 }
 
-suspend fun main() {
+suspend fun main42() {
     printlnThread(1)
     try {
         supervisorScope { //①
@@ -95,6 +97,62 @@ suspend fun main() {
     }
     printlnThread(13)
 }
+
+suspend fun hello() = suspendCoroutineUninterceptedOrReturn<Int>{
+        continuation ->
+    printlnThread(1)
+    thread {
+        Thread.sleep(1000)
+        printlnThread(2)
+        continuation.resume(1024)
+    }
+    printlnThread(3)
+    COROUTINE_SUSPENDED
+}
+
+suspend fun main43() {
+    val fi = sequence<Long> {
+        yield(1L)
+        var cur = 1L
+        var next = 1L
+        while (true) {
+            yield(next)
+            val temp = cur + next
+            cur = next
+            next = temp
+        }
+    }
+    fi.iterator().next()
+
+    fi.take(5).forEach { printlnThread(it) }
+
+}
+
+suspend fun returnSuspended() = suspendCoroutineUninterceptedOrReturn<String>{
+        continuation ->
+    thread {
+        Thread.sleep(1000)
+        continuation.resume("Return suspended.")
+    }
+    COROUTINE_SUSPENDED
+}
+
+suspend fun returnImmediately() = suspendCoroutineUninterceptedOrReturn<String>{
+    printlnThread(1)
+    "Return immediately."
+}
+
+suspend fun main() {
+    printlnThread(1)
+    printlnThread(returnSuspended())
+    printlnThread(2)
+    delay(1000)
+    printlnThread(3)
+    printlnThread(returnImmediately())
+    printlnThread(4)
+}
+
+
 
 
 
