@@ -1,12 +1,14 @@
 package com.yang.study_coroutine.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.yang.study_coroutine.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,7 +18,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btn_coroutine).setOnClickListener {
-            startActivity(Intent(this, CoroutineActivity::class.java))
+            launch {
+                val job = launch {
+                    Toast.makeText(this@MainActivity, "等一下啊", Toast.LENGTH_LONG).show()
+                    delay(3000)
+                }.join()
+                startActivity(Intent(this@MainActivity, CoroutineActivity::class.java))
+            }
+
         }
 
         findViewById<Button>(R.id.btn_coroutine_mvvm).setOnClickListener {
