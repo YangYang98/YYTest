@@ -8,7 +8,7 @@ import com.yang.study_coroutine.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity2() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
         }
 
         findViewById<Button>(R.id.btn_coroutine).setOnClickListener {
-            launch {
+            mainScope.launch {
                 val job = launch {
                     Toast.makeText(this@MainActivity, "等一下啊", Toast.LENGTH_LONG).show()
                     delay(3000)

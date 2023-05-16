@@ -1,6 +1,7 @@
 package com.yang.study_coroutine.ui
 
 import androidx.appcompat.app.AppCompatActivity
+import com.yang.study_coroutine.interfaces.CoroutineScopeInterface
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -15,4 +16,8 @@ abstract class BaseActivity: AppCompatActivity(), CoroutineScope by MainScope() 
         super.onDestroy()
         cancel()
     }
+}
+
+abstract class BaseActivity2: AppCompatActivity(), CoroutineScopeInterface {
+
 }
