@@ -17,7 +17,7 @@ class MainActivity : BaseActivity2() {
             startActivity(Intent(this, TraditionActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btn_coroutine).setOnClickListener {
+        /*findViewById<Button>(R.id.btn_coroutine).setOnClickListener {
             mainScope.launch {
                 val job = launch {
                     Toast.makeText(this@MainActivity, "等一下啊", Toast.LENGTH_LONG).show()
@@ -25,7 +25,14 @@ class MainActivity : BaseActivity2() {
                 }.join()
                 startActivity(Intent(this@MainActivity, CoroutineActivity::class.java))
             }
+        }*/
 
+        findViewById<Button>(R.id.btn_coroutine).onClickSuspend {
+            val job = launch {
+                Toast.makeText(this@MainActivity, "等一下啊", Toast.LENGTH_LONG).show()
+                delay(3000)
+            }.join()
+            startActivity(Intent(this@MainActivity, CoroutineActivity::class.java))
         }
 
         findViewById<Button>(R.id.btn_coroutine_mvvm).setOnClickListener {
