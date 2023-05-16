@@ -1,6 +1,9 @@
 package com.yang.study_coroutine
 
+import android.annotation.SuppressLint
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
+import java.util.Date
 import kotlin.system.measureTimeMillis
 
 
@@ -28,8 +31,10 @@ fun main1() = runBlocking {
     printlnThread("main end ==== $coroutineContext ===")
 }
 
+@SuppressLint("SimpleDateFormat")
 fun printlnThread(any: Any) {
-    println("$any:\tthread:${Thread.currentThread().name}")
+    val date = SimpleDateFormat("yyyy-MM:dd-HH:mm:ss").format(Date(System.currentTimeMillis()))
+    println("$date thread:${Thread.currentThread().name} :\t $any")
 }
 
 fun <T> printlnCC(key: Any, cc: CancellableContinuation<T>) {
