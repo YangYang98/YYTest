@@ -12,6 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPack">
         <activity
+            android:name=".ui.MultSubscribeActivity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.MultSubscribeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.StateFlowActivity"
             android:exported="false">
             <meta-data

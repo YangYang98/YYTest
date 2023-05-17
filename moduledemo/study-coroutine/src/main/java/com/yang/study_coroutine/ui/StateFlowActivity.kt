@@ -3,11 +3,11 @@ package com.yang.study_coroutine.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.yang.study_coroutine.R
+import com.yang.study_coroutine.utils.log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.sample
 import kotlinx.coroutines.launch
@@ -37,9 +37,5 @@ class StateFlowActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun log(msg: String) {
-        Log.d("LOG_PRINT", "内容:$msg 线程:${Thread.currentThread().name}")
     }
 }

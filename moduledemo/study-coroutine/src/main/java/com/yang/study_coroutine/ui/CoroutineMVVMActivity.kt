@@ -1,5 +1,6 @@
 package com.yang.study_coroutine.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -19,6 +20,10 @@ class CoroutineMVVMActivity : AppCompatActivity() {
 
         binding.btnRequest.setOnClickListener {
             viewModel.requestLogin("Derry-vip", "123456")
+        }
+
+        binding.btnMulSubscribe.setOnClickListener {
+            startActivity(Intent(this, MultSubscribeActivity::class.java))
         }
 
     }

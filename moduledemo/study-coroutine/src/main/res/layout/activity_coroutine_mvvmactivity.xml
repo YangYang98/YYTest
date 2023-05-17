@@ -34,5 +34,13 @@
             android:text="请求"
             />
 
+        <Button
+            android:id="@+id/btn_mul_subscribe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="一处接收多处订阅"
+            />
+
     </LinearLayout>
 </layout>
