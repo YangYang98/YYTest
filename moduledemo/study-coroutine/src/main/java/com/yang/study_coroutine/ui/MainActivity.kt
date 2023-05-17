@@ -38,5 +38,9 @@ class MainActivity : BaseActivity2() {
         findViewById<Button>(R.id.btn_coroutine_mvvm).setOnClickListener {
             startActivity(Intent(this, CoroutineMVVMActivity::class.java))
         }
+
+        findViewById<Button>(R.id.btn_flow).setOnClickListener {
+            startActivity(Intent(this, StateFlowActivity::class.java))
+        }
     }
 }
