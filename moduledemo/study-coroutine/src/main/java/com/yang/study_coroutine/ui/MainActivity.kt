@@ -40,7 +40,7 @@ class MainActivity : BaseActivity2() {
         }
 
         findViewById<Button>(R.id.btn_flow).setOnClickListener {
-            startActivity(Intent(this, StateFlowActivity::class.java))
+            startActivity(Intent(this, FlowActivity::class.java))
         }
     }
 }
