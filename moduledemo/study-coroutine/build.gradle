@@ -69,6 +69,9 @@ dependencies {
 
     implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0'
 
+    implementation "androidx.activity:activity-ktx:1.6.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
+
 
     /*implementation libs.viewmodel
     implementation libs.lifecycle

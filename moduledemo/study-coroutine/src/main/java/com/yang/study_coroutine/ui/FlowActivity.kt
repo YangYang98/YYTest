@@ -19,5 +19,8 @@ class FlowActivity : AppCompatActivity() {
         binding.btnStateFlow.setOnClickListener {
             startActivity(Intent(this, StateFlowActivity::class.java))
         }
+        binding.btnFlowTimer.setOnClickListener {
+            startActivity(Intent(this, FlowTimerActivity::class.java))
+        }
     }
 }

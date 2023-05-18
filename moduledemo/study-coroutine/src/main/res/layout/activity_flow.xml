@@ -27,5 +27,12 @@
             android:textAllCaps="false"
             android:text="StateFlow" />
 
+        <Button
+            android:id="@+id/btn_flow_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Flow计时器" />
+
     </LinearLayout>
 </layout>
