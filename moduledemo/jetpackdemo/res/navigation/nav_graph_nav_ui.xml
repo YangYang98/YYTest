@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_nav_ui"
+    app:startDestination="@id/navUiMainFragment">
+
+    <fragment
+        android:id="@+id/navUiMainFragment"
+        android:name="java.com.example.jetpackdemo.ui.activity.navigation.ui.NavUiMainFragment"
+        android:label="NavUiMainFragment" />
+    <fragment
+        android:id="@+id/navUiSettingsFragment"
+        android:name="java.com.example.jetpackdemo.ui.activity.navigation.ui.NavUiSettingsFragment"
+        android:label="NavUiSettingsFragment" />
+</navigation>

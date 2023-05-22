@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationMainElementActivity
+import java.com.example.jetpackdemo.ui.activity.navigation.ui.NavigationUIActivity
 
 
 /**
@@ -13,5 +14,9 @@ class NavigationEventHandleListener constructor(val context: Context) {
 
     fun btnMainElementOnCLick(view: View) {
         context.startActivity(Intent(context, NavigationMainElementActivity::class.java))
+    }
+
+    fun btnNavigationUIOnCLick(view: View) {
+        context.startActivity(Intent(context, NavigationUIActivity::class.java))
     }
 }
