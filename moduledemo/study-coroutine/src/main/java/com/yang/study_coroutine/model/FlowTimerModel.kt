@@ -1,8 +1,10 @@
 package com.yang.study_coroutine.model
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import java.util.Timer
+import java.util.TimerTask
 
 
 /**
@@ -10,13 +12,17 @@ import kotlinx.coroutines.flow.flow
  */
 class FlowTimerModel : ViewModel() {
 
-    val timeFlow = flow {
-        var time = 0
-        while (true) {
-            emit(time)
-            delay(1000)
-            time++
-        }
+    private val _stateFlow = MutableStateFlow(0)
+    val stateFlow = _stateFlow.asStateFlow()
+
+
+    fun startTimer() {
+        val timer = Timer()
+        timer.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                _stateFlow.value += 1
+            }
+       }, 0, 1000)
     }
 
 }
