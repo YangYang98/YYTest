@@ -46,26 +46,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    def coroutine_version = "1.6.4"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    implementation libs.coroutines_android
+    implementation libs.coroutines_core
 
     //retrofit
-    def retrofit_version = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-
-    /*implementation libs.retrofit
+    implementation libs.retrofit
     implementation libs.converter_gson
-    implementation libs.converter_moshi*/
-
-    def lifecycle_version = "2.6.1"// ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"// LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"// Lifecycle
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation libs.converter_moshi
+    implementation libs.adapter_rxjava2
+    implementation libs.retrofit2_kotlin_coroutines_adapter
 
     implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0'
 
@@ -73,7 +62,7 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.5.3"
 
 
-    /*implementation libs.viewmodel
-    implementation libs.lifecycle
-    implementation libs.runtime*/
+    implementation libs.viewmodel
+    implementation libs.livedata
+    implementation libs.runtime
 }
