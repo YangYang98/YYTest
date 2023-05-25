@@ -3,13 +3,22 @@ package com.yang.study_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.yang.study_compose.ui.theme.JetPackTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,6 +33,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android & YANGYANG")
+
+                    ModifierSize()
                 }
             }
         }
@@ -37,8 +48,34 @@ fun Greeting(name: String) {
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun DefaultPreview() {
+fun ModifierSize() {
     JetPackTheme {
-        Greeting("Android & YANGYANG")
+        Row {
+            Image(
+                painterResource(id = R.drawable.ic_launcher_background),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(60.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Image(
+                painterResource(id = R.drawable.ic_launcher_background),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(CircleShape)
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+
+            //size同时提供了重载方法，支持单独设置组件的宽度与高度
+            Image(
+                painterResource(id = R.drawable.ic_launcher_background),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(100.dp, 300.dp)
+                    .clip(CircleShape)
+            )
+        }
     }
 }
