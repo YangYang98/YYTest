@@ -18,5 +18,11 @@
     <fragment
         android:id="@+id/navDeepLinkDetailFragment"
         android:name="java.com.example.jetpackdemo.ui.activity.navigation.deeplink.NavigationDeepLinkDetailFragment"
-        android:label="NavUiSettingsFragment" />
+        android:label="NavUiSettingsFragment" >
+
+        <!--使用adb命令模拟deeplink url
+        adb shell am start -a android.intent.action.VIEW -d "http://www.yangyang.com/fromWeb"
+        -->
+        <deepLink app:uri="www.yangyang.com/{params}"/>
+    </fragment>
 </navigation>

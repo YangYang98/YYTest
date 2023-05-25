@@ -1,5 +1,6 @@
 package java.com.example.jetpackdemo.ui.activity.navigation.deeplink
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,13 +23,20 @@ class NavigationDeepLinkDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_nav_deep_link_detail, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val button = view?.findViewById<Button>(R.id.button_detail)
+
         val args = NavigationDeepLinkHomeFragmentArgs.fromBundle(arguments ?: Bundle())
 
-        val button = view?.findViewById<Button>(R.id.button_detail)
-        button?.text = "ToHomeFragment ${args.userName}"
+        if (arguments != null) {
+            val params = requireArguments().getString("params")
+            button?.text = "ToHomeFragment ${params}"
+        }
+
+        //button?.text = "ToHomeFragment ${args.userName}"
         button?.setOnClickListener {
 
         }
