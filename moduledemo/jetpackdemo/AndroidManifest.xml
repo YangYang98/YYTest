@@ -147,6 +147,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name="java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity"
+            android:exported="false"
+
+            />
     </application>
 
 </manifest>

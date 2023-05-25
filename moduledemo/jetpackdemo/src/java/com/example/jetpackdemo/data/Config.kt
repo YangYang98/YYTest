@@ -12,4 +12,5 @@ class Config {
     var roomBase = "RoomBase"
     var navigationBase = "NavigationBase"
     var includedName = "被Include"
+    var composeName = "Compose Study"
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import java.com.example.jetpackdemo.ui.activity.*
+import java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationBaseActivity
 import java.com.example.jetpackdemo.ui.activity.room.RoomBaseActivity
 
@@ -40,5 +41,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnNavigationBaseOnClick(view: View) {
         context.startActivity(Intent(context, NavigationBaseActivity::class.java))
+    }
+
+    fun btnComposeStudyOnClick(view: View) {
+        context.startActivity(Intent(context, ComposeBaseActivity::class.java))
     }
 }
