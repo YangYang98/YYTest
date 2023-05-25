@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -46,6 +49,30 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ModifierFillMaxSize() {
+    Column {
+        Row(Modifier.height(200.dp)) {
+            Box(modifier = Modifier
+                .fillMaxHeight()
+                .width(50.dp)
+                .background(Color.Cyan))
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)
+                .background(Color.Blue))
+        }
+
+        Spacer(modifier = Modifier.height(10.dp).fillMaxWidth().background(Color.Black))
+        Row(Modifier.height(200.dp)) {
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Yellow))
         }
     }
 }
