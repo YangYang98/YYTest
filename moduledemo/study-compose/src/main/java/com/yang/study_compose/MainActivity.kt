@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,9 +14,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -46,10 +49,28 @@ class MainActivity : ComponentActivity() {
                     Column {
                         ModifierSize()
                         ModifierBackground()
+                        ModifierFillMaxSize()
                     }
                 }
             }
         }
+    }
+}
+
+/**
+ * 传统布局有Margin和Padding之分，Compose中只有padding这一种修饰符，
+ * 根据在调用链中的位置不同发挥不同作用，概念更加简洁，这也体现了Modifier中链式调用的特点。
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierBorderAndPadding() {
+    Box(
+        modifier = Modifier
+            .padding(8.dp) // 外间隙
+            .border(2.dp, Color.Red, shape = RoundedCornerShape(2.dp)) //边框
+            .padding(8.dp) //内间隙
+    ) {
+        Spacer(modifier = Modifier.size(width = 100.dp, height = 10.dp).background(Color.Blue))
     }
 }
 
@@ -68,7 +89,10 @@ fun ModifierFillMaxSize() {
                 .background(Color.Blue))
         }
 
-        Spacer(modifier = Modifier.height(10.dp).fillMaxWidth().background(Color.Black))
+        Spacer(modifier = Modifier
+            .height(10.dp)
+            .fillMaxWidth()
+            .background(Color.Black))
         Row(Modifier.height(200.dp)) {
             Box(modifier = Modifier
                 .fillMaxSize()
