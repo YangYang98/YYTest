@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_nav_ui"
+    app:startDestination="@id/navDeepLinkMainFragment">
+
+    <fragment
+        android:id="@+id/navDeepLinkMainFragment"
+        android:name="java.com.example.jetpackdemo.ui.activity.navigation.deeplink.NavigationDeepLinkHomeFragment"
+        android:label="NavUiMainFragment" >
+
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="yangyang"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/navDeepLinkDetailFragment"
+        android:name="java.com.example.jetpackdemo.ui.activity.navigation.deeplink.NavigationDeepLinkDetailFragment"
+        android:label="NavUiSettingsFragment" />
+</navigation>

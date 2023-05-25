@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationMainElementActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.ui.NavigationUIActivity
+import java.com.example.jetpackdemo.ui.activity.navigation.deeplink.DeepLinkActivity
 
 
 /**
@@ -18,5 +19,9 @@ class NavigationEventHandleListener constructor(val context: Context) {
 
     fun btnNavigationUIOnCLick(view: View) {
         context.startActivity(Intent(context, NavigationUIActivity::class.java))
+    }
+
+    fun btnNavigationDeepLinkOnClick(view: View) {
+        context.startActivity(Intent(context, DeepLinkActivity::class.java))
     }
 }

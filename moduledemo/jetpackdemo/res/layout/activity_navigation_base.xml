@@ -33,5 +33,14 @@
             android:textAllCaps="false"
             android:onClick="@{eventHandle.btnNavigationUIOnCLick}"
             />
+
+        <Button
+            android:id="@+id/btn_navigation_deep_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Navigation DeepLink"
+            android:textAllCaps="false"
+            android:onClick="@{eventHandle.btnNavigationDeepLinkOnClick}"
+            />
     </LinearLayout>
 </layout>
