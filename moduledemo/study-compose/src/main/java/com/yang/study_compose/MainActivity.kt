@@ -16,13 +16,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            //JetPackTheme是由Android Studio根据项目名称自动生成，为界面提供默认主题
             JetPackTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Greeting("Android & YANGYANG")
                 }
             }
         }
@@ -34,10 +35,10 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     JetPackTheme {
-        Greeting("Android")
+        Greeting("Android & YANGYANG")
     }
 }
