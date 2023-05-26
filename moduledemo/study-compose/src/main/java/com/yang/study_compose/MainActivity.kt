@@ -57,69 +57,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/**
- * @LayoutScopeMarker注解来规避Receiver的跨级访问
- */
-/**
- * matchParentSize是只能在BoxScope中使用的作用域限定修饰符。
- * 当使用matchParentSize设置尺寸时，可以保证当前组件的尺寸与父组件相同。
- * 而父组件默认的是wrapContent，会根据UserInfo的尺寸确定自身的尺寸
- */
-@Preview(showBackground = true)
-@Composable
-fun ModifierMatchParentSize() {
-    Box {
-        Box(
-           modifier = Modifier
-               .matchParentSize()
-               .background(Color.LightGray)
-        )
-        Text(text = "Compose学习")
-    }
-}
-
-/**
- * 如果使用fillMaxSize取代matchParentSize，
- * 那么该组件的尺寸会被设置为父组件所允许的最大尺寸，
- * 这样会导致背景铺满整个屏幕
- */
-@Preview(showBackground = true)
-@Composable
-fun ModifierFillParentSize() {
-    Box {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.LightGray)
-        )
-        Text(text = "Compose学习")
-    }
-}
-
-/**
- * offset用来移动被修饰组件的位置
- */
-@Preview(showBackground = true)
-@Composable
-fun ModifierOffset() {
-    Column {
-        Box(
-            modifier = Modifier
-                .size(100.dp)
-                .offset(x = 200.dp, y = 150.dp)
-                .background(Color.Cyan)
-        )
-        //使用offset的重载方法，返回一个IntOffset实例
-        Box(
-            modifier = Modifier
-                .size(100.dp)
-                .offset { IntOffset(200.dp.roundToPx(), 160.dp.roundToPx()) }
-                .background(Color.Green)
-        )
-    }
-
-}
-
 
 /**
  * 传统布局有Margin和Padding之分，Compose中只有padding这一种修饰符，
@@ -260,4 +197,67 @@ fun main() {
         }
     }
 
+}
+
+/**
+ * offset用来移动被修饰组件的位置
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierOffset() {
+    Column {
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset(x = 200.dp, y = 150.dp)
+                .background(Color.Cyan)
+        )
+        //使用offset的重载方法，返回一个IntOffset实例
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset { IntOffset(200.dp.roundToPx(), 160.dp.roundToPx()) }
+                .background(Color.Green)
+        )
+    }
+
+}
+
+/**
+ * @LayoutScopeMarker注解来规避Receiver的跨级访问
+ */
+/**
+ * matchParentSize是只能在BoxScope中使用的作用域限定修饰符。
+ * 当使用matchParentSize设置尺寸时，可以保证当前组件的尺寸与父组件相同。
+ * 而父组件默认的是wrapContent，会根据UserInfo的尺寸确定自身的尺寸
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierMatchParentSize() {
+    Box {
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .background(Color.LightGray)
+        )
+        Text(text = "Compose学习")
+    }
+}
+
+/**
+ * 如果使用fillMaxSize取代matchParentSize，
+ * 那么该组件的尺寸会被设置为父组件所允许的最大尺寸，
+ * 这样会导致背景铺满整个屏幕
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierFillParentSize() {
+    Box {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.LightGray)
+        )
+        Text(text = "Compose学习")
+    }
 }
