@@ -47,11 +47,52 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        ModifierOffset()
+
+                        ModifierMatchParentSize()
+                        ModifierFillParentSize()
                     }
                 }
             }
         }
+    }
+}
+
+/**
+ * @LayoutScopeMarker注解来规避Receiver的跨级访问
+ */
+/**
+ * matchParentSize是只能在BoxScope中使用的作用域限定修饰符。
+ * 当使用matchParentSize设置尺寸时，可以保证当前组件的尺寸与父组件相同。
+ * 而父组件默认的是wrapContent，会根据UserInfo的尺寸确定自身的尺寸
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierMatchParentSize() {
+    Box {
+        Box(
+           modifier = Modifier
+               .matchParentSize()
+               .background(Color.LightGray)
+        )
+        Text(text = "Compose学习")
+    }
+}
+
+/**
+ * 如果使用fillMaxSize取代matchParentSize，
+ * 那么该组件的尺寸会被设置为父组件所允许的最大尺寸，
+ * 这样会导致背景铺满整个屏幕
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierFillParentSize() {
+    Box {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.LightGray)
+        )
+        Text(text = "Compose学习")
     }
 }
 
@@ -194,4 +235,29 @@ fun ModifierBackground() {
             }
         }
     }
+}
+
+class AScope {
+    fun visitA() {}
+}
+
+class BScope {
+    fun visitB() {}
+}
+
+fun funA(scope: AScope.() -> Unit) {
+    scope(AScope())
+}
+
+fun funB(scope: () -> Unit) {
+    scope()
+}
+
+fun main() {
+    funA {
+        funB {
+            visitA()
+        }
+    }
+
 }
