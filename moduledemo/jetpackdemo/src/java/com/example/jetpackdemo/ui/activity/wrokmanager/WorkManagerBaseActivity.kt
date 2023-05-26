@@ -9,6 +9,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.jetpackdemo.R
 import com.example.jetpackdemo.databinding.ActivityWorkManagerBaseBinding
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -43,6 +44,8 @@ class WorkManagerBaseActivity: AppCompatActivity() {
             val workRequest = OneTimeWorkRequest.Builder(MyWork::class.java)
                 //设置触发条件
                 .setConstraints(constraints)
+                //设置延迟执行
+                .setInitialDelay(5, TimeUnit.SECONDS)
                 .build()
 
             val workManager = WorkManager.getInstance(this)
