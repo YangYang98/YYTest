@@ -1,5 +1,6 @@
 package java.com.example.jetpackdemo.ui.activity.wrokmanager
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -86,6 +87,10 @@ class WorkManagerBaseActivity: AppCompatActivity() {
                     workManager.cancelWorkById(workRequest.id)
                 }
             }, 2000L)*/
+        }
+
+        binding.buttonWorkChain.setOnClickListener {
+            startActivity(Intent(this, WorkManagerWorkChainActivity::class.java))
         }
 
     }

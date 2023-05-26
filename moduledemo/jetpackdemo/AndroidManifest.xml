@@ -169,6 +169,10 @@
         <activity android:name="java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerBaseActivity"
             android:exported="false"
             />
+
+        <activity android:name="java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerWorkChainActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
