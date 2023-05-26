@@ -11,6 +11,7 @@ import androidx.work.Constraints
 import androidx.work.Data
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
+import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.example.jetpackdemo.R
@@ -63,8 +64,13 @@ class WorkManagerBaseActivity: AppCompatActivity() {
                 .setInputData(inputData)
                 .build()
 
+            //周期性任务
+            //不能少于15min
+            val periodicWorkRequest = PeriodicWorkRequest.Builder(MyWork::class.java, Duration.ofMinutes(15))
+                .build()
+
             val workManager = WorkManager.getInstance(this)
-            workManager.enqueue(workRequest)
+            workManager.enqueue(periodicWorkRequest)
 
             //观察任务状态
             workManager.getWorkInfoByIdLiveData(workRequest.id).observe(this) {
