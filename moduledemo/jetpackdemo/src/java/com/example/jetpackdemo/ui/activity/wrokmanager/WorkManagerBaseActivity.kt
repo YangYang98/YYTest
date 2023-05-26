@@ -8,14 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
+import androidx.work.Data
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.example.jetpackdemo.R
 import com.example.jetpackdemo.databinding.ActivityWorkManagerBaseBinding
 import java.time.Duration
-import java.util.Timer
-import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
 
@@ -46,6 +46,9 @@ class WorkManagerBaseActivity: AppCompatActivity() {
             .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build()
 
+            val inputData = Data.Builder()
+                .putString("input_data", "输入数据")
+                .build()
 
             //WorkRequest --- 配置任务
             //这里是一次性执行的任务
@@ -57,6 +60,7 @@ class WorkManagerBaseActivity: AppCompatActivity() {
                 //设置退避策略 --- 假设网络请求失败后的执行策略
                 .setBackoffCriteria(BackoffPolicy.LINEAR, Duration.ofSeconds(2L))
                 .addTag("MyWork Tag")
+                .setInputData(inputData)
                 .build()
 
             val workManager = WorkManager.getInstance(this)
@@ -65,14 +69,17 @@ class WorkManagerBaseActivity: AppCompatActivity() {
             //观察任务状态
             workManager.getWorkInfoByIdLiveData(workRequest.id).observe(this) {
                 Log.e("YANGYANG", it.toString())
+                if (it != null && it.state == WorkInfo.State.SUCCEEDED) {
+                    Log.e("YANGYANG", "outputData: ${it.outputData.getString("output_data")}")
+                }
             }
 
             //取消任务
-            Timer().schedule(object : TimerTask() {
+            /*Timer().schedule(object : TimerTask() {
                 override fun run() {
                     workManager.cancelWorkById(workRequest.id)
                 }
-            }, 2000L)
+            }, 2000L)*/
         }
 
     }
