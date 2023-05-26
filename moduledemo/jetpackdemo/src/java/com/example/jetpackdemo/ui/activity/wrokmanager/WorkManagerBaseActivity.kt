@@ -2,6 +2,7 @@ package java.com.example.jetpackdemo.ui.activity.wrokmanager
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,6 +14,8 @@ import androidx.work.WorkManager
 import com.example.jetpackdemo.R
 import com.example.jetpackdemo.databinding.ActivityWorkManagerBaseBinding
 import java.time.Duration
+import java.util.Timer
+import java.util.TimerTask
 import java.util.concurrent.TimeUnit
 
 
@@ -53,10 +56,23 @@ class WorkManagerBaseActivity: AppCompatActivity() {
                 .setInitialDelay(5, TimeUnit.SECONDS)
                 //设置退避策略 --- 假设网络请求失败后的执行策略
                 .setBackoffCriteria(BackoffPolicy.LINEAR, Duration.ofSeconds(2L))
+                .addTag("MyWork Tag")
                 .build()
 
             val workManager = WorkManager.getInstance(this)
             workManager.enqueue(workRequest)
+
+            //观察任务状态
+            workManager.getWorkInfoByIdLiveData(workRequest.id).observe(this) {
+                Log.e("YANGYANG", it.toString())
+            }
+
+            //取消任务
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    workManager.cancelWorkById(workRequest.id)
+                }
+            }, 2000L)
         }
 
     }

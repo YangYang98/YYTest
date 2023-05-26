@@ -15,6 +15,6 @@ class MyWork(context: Context, params: WorkerParameters): Worker(context, params
         //Log.e("YANGYANG", "MyWork doWork sleep before")
         //SystemClock.sleep(2000)
         Log.e("YANGYANG", "MyWork doWork sleep after")
-        return Result.retry()
+        return Result.success()
     }
 }
