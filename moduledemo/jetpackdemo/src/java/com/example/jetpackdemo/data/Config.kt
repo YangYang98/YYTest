@@ -13,4 +13,5 @@ class Config {
     var navigationBase = "NavigationBase"
     var includedName = "被Include"
     var composeName = "Compose Study"
+    var workManagerName = "WorkManagerBase"
 }

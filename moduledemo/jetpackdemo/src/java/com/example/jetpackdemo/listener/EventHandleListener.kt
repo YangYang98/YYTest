@@ -7,6 +7,7 @@ import java.com.example.jetpackdemo.ui.activity.*
 import java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationBaseActivity
 import java.com.example.jetpackdemo.ui.activity.room.RoomBaseActivity
+import java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerBaseActivity
 
 
 /**
@@ -45,5 +46,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnComposeStudyOnClick(view: View) {
         context.startActivity(Intent(context, ComposeBaseActivity::class.java))
+    }
+
+    fun btnWorkManagerOnClick(view: View) {
+        context.startActivity(Intent(context, WorkManagerBaseActivity::class.java))
     }
 }
