@@ -1,14 +1,18 @@
 package java.com.example.jetpackdemo.ui.activity.wrokmanager
 
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.jetpackdemo.R
 import com.example.jetpackdemo.databinding.ActivityWorkManagerBaseBinding
+import java.time.Duration
 import java.util.concurrent.TimeUnit
 
 
@@ -17,6 +21,7 @@ import java.util.concurrent.TimeUnit
  */
 class WorkManagerBaseActivity: AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityWorkManagerBaseBinding = DataBindingUtil.setContentView(this, R.layout.activity_work_manager_base)
@@ -46,6 +51,8 @@ class WorkManagerBaseActivity: AppCompatActivity() {
                 .setConstraints(constraints)
                 //设置延迟执行
                 .setInitialDelay(5, TimeUnit.SECONDS)
+                //设置退避策略 --- 假设网络请求失败后的执行策略
+                .setBackoffCriteria(BackoffPolicy.LINEAR, Duration.ofSeconds(2L))
                 .build()
 
             val workManager = WorkManager.getInstance(this)

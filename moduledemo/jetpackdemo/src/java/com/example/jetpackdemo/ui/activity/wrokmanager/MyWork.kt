@@ -12,9 +12,9 @@ import androidx.work.WorkerParameters
 class MyWork(context: Context, params: WorkerParameters): Worker(context, params) {
 
     override fun doWork(): Result {
-        Log.e("YANGYANG", "MyWork doWork sleep before")
+        //Log.e("YANGYANG", "MyWork doWork sleep before")
         //SystemClock.sleep(2000)
         Log.e("YANGYANG", "MyWork doWork sleep after")
-        return Result.success()
+        return Result.retry()
     }
 }
