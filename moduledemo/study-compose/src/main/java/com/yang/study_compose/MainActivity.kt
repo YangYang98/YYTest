@@ -47,9 +47,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-
-                        ModifierMatchParentSize()
-                        ModifierFillParentSize()
+                        ModifierWeight()
                     }
                 }
             }
@@ -259,5 +257,29 @@ fun ModifierFillParentSize() {
                 .background(Color.LightGray)
         )
         Text(text = "Compose学习")
+    }
+}
+
+/**
+ * 在RowScope与ColumnScope中，可以使用专属的weight修饰符来设置尺寸
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierWeight() {
+    Column(modifier = Modifier
+        .width(300.dp)
+        .height(200.dp)) {
+        Box(modifier = Modifier
+            .weight(1f)
+            .fillMaxWidth()
+            .background(Color.Yellow))
+        Box(modifier = Modifier
+            .weight(1f)
+            .fillMaxWidth()
+            .background(Color.Green))
+        Box(modifier = Modifier
+            .weight(1f)
+            .fillMaxWidth()
+            .background(Color.Blue))
     }
 }
