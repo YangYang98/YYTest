@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,6 +31,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.yang.study_compose.ui.theme.JetPackTheme
 
@@ -44,18 +46,39 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android & YANGYANG")
-
                     Column {
-                        ModifierSize()
-                        ModifierBackground()
-                        ModifierFillMaxSize()
+                        ModifierOffset()
                     }
                 }
             }
         }
     }
 }
+
+/**
+ * offset用来移动被修饰组件的位置
+ */
+@Preview(showBackground = true)
+@Composable
+fun ModifierOffset() {
+    Column {
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset(x = 200.dp, y = 150.dp)
+                .background(Color.Cyan)
+        )
+        //使用offset的重载方法，返回一个IntOffset实例
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset { IntOffset(200.dp.roundToPx(), 160.dp.roundToPx()) }
+                .background(Color.Green)
+        )
+    }
+
+}
+
 
 /**
  * 传统布局有Margin和Padding之分，Compose中只有padding这一种修饰符，
@@ -70,7 +93,9 @@ fun ModifierBorderAndPadding() {
             .border(2.dp, Color.Red, shape = RoundedCornerShape(2.dp)) //边框
             .padding(8.dp) //内间隙
     ) {
-        Spacer(modifier = Modifier.size(width = 100.dp, height = 10.dp).background(Color.Blue))
+        Spacer(modifier = Modifier
+            .size(width = 100.dp, height = 10.dp)
+            .background(Color.Blue))
     }
 }
 
