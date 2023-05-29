@@ -9,6 +9,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPack">
         <activity
+            android:name=".ui.theme.activity.EditTextActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.theme.activity.TextViewActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.theme.activity.CommonBaseViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
