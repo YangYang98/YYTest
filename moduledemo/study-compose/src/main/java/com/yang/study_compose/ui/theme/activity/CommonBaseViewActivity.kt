@@ -51,6 +51,12 @@ class CommonBaseViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "图片组件")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonBaseViewActivity, ButtonViewActivity::class.java))
+                        }) {
+                            Text(text = "按钮组件")
+                        }
                     }
                 }
             }
