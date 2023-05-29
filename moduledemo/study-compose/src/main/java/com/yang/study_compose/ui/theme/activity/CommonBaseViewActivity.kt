@@ -45,6 +45,12 @@ class CommonBaseViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "TextField输入框")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonBaseViewActivity, ImageViewActivity::class.java))
+                        }) {
+                            Text(text = "图片组件")
+                        }
                     }
                 }
             }

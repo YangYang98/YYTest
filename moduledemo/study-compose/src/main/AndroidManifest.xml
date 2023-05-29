@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPack">
         <activity
+            android:name=".ui.theme.activity.ImageViewActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.theme.activity.EditTextActivity"
             android:exported="false"/>
         <activity
