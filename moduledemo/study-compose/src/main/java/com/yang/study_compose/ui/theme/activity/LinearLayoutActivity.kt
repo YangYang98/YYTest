@@ -7,16 +7,25 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,7 +53,8 @@ class LinearLayoutActivity : ComponentActivity() {
                         .padding(10.dp),
                     color = MaterialTheme.colors.background
                 ) {
-                    LinearLayoutView()
+
+                    VerticalLinearLayoutView()
                 }
             }
         }
@@ -53,7 +63,7 @@ class LinearLayoutActivity : ComponentActivity() {
 
     @Preview(showBackground = true)
     @Composable
-    fun LinearLayoutView() {
+    fun VerticalLinearLayoutView() {
         Column (
             modifier = Modifier.verticalScroll(rememberScrollState()) //可滚动
         ){
@@ -62,7 +72,7 @@ class LinearLayoutActivity : ComponentActivity() {
                     text = "Hello, World!",
                     style = MaterialTheme.typography.h6
                 )
-                Text(text = "Column默认情况下")
+                Text(text = "Column -- 默认情况下")
             }
 
             Spacer(modifier = Modifier
@@ -77,7 +87,7 @@ class LinearLayoutActivity : ComponentActivity() {
                     style = TextStyle(fontSize = 7.sp)
                 )
                 Text(
-                    text = "Column添加边框",
+                    text = "Column -- 添加边框",
                     style = TextStyle(fontSize = 7.sp)
                 )
             }
@@ -87,7 +97,9 @@ class LinearLayoutActivity : ComponentActivity() {
                 .background(Color.LightGray))
 
             Column(
-                modifier = Modifier.border(1.dp, Color.Black).size(250.dp, 150.dp),
+                modifier = Modifier
+                    .border(1.dp, Color.Black)
+                    .size(250.dp, 150.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
@@ -106,7 +118,9 @@ class LinearLayoutActivity : ComponentActivity() {
                 .requiredHeight(10.dp))
 
             Column(
-                modifier = Modifier.border(1.dp, Color.Black).size(250.dp, 150.dp),
+                modifier = Modifier
+                    .border(1.dp, Color.Black)
+                    .size(250.dp, 150.dp),
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
@@ -118,10 +132,52 @@ class LinearLayoutActivity : ComponentActivity() {
 
                 //在对齐效果的影响下，Modifier.align修饰符会优先于Column的horizontalAlignment参数
                 Text(
-                    text = "Text设置Modifier.align",
+                    text = "Column -- Text设置Modifier.align",
                     style = TextStyle(fontSize = 7.sp),
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
+            }
+
+            HorizontalLinearLayoutView()
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun HorizontalLinearLayoutView() {
+        Surface(
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+            elevation = 10.dp
+        ) {
+            Column(modifier = Modifier.padding(12.dp)) {
+                Text(
+                    text = "Jetpack Compose 是什么？",
+                    style = MaterialTheme.typography.h6
+                )
+                Spacer(Modifier.padding(vertical = 5.dp))
+                Text(
+                    text = "Jetpack Compose是用于构建原生Android界面的新工具包。它可简化并加快Android上的界" +
+                            "面开发,使用更少的代码、强大的工具和直观的KotlinAPI,让后应用生动而精彩。",
+                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Favorite, contentDescription = null)
+                    }
+
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Face, contentDescription = null)
+                    }
+
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Share, contentDescription = null)
+                    }
+                }
             }
         }
     }
