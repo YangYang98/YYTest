@@ -173,6 +173,10 @@
         <activity android:name="java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerWorkChainActivity"
             android:exported="false"
             />
+
+        <activity android:name="java.com.example.jetpackdemo.ui.activity.paging.PagingBaseActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>

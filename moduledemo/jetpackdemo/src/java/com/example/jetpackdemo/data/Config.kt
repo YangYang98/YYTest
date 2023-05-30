@@ -14,4 +14,5 @@ class Config {
     var includedName = "被Include"
     var composeName = "Compose Study"
     var workManagerName = "WorkManagerBase"
+    var pagingName = "PagingBase"
 }

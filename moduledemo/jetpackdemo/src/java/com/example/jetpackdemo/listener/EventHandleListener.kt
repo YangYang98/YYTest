@@ -6,6 +6,7 @@ import android.view.View
 import java.com.example.jetpackdemo.ui.activity.*
 import java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationBaseActivity
+import java.com.example.jetpackdemo.ui.activity.paging.PagingBaseActivity
 import java.com.example.jetpackdemo.ui.activity.room.RoomBaseActivity
 import java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerBaseActivity
 
@@ -50,5 +51,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnWorkManagerOnClick(view: View) {
         context.startActivity(Intent(context, WorkManagerBaseActivity::class.java))
+    }
+
+    fun btnPagingOnClick(view: View) {
+        context.startActivity(Intent(context, PagingBaseActivity::class.java))
     }
 }
