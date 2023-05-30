@@ -57,6 +57,12 @@ class CommonBaseViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "按钮组件")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonBaseViewActivity, SelectorViewActivity::class.java))
+                        }) {
+                            Text(text = "选择器组件")
+                        }
                     }
                 }
             }
