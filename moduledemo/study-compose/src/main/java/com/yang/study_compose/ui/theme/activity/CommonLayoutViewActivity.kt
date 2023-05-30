@@ -39,6 +39,12 @@ class CommonLayoutViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "线性布局")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonLayoutViewActivity, FrameLayoutActivity::class.java))
+                        }) {
+                            Text(text = "帧布局")
+                        }
                     }
                 }
             }
