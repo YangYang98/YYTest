@@ -35,6 +35,13 @@ import androidx.compose.ui.unit.dp
 import com.yang.study_compose.R
 import com.yang.study_compose.ui.theme.JetPackTheme
 
+/**
+ * Surface与Box之间的区别：
+ * • 如果我们需要快速设置界面的形状、阴影、边框、颜色等，则用Surface更为合适，
+ *   它可以减少Modifier的使用量。
+ * • 如果只是需要简单地设置界面的背景颜色、大小，且有时候需要简单安排里面布局的位置，
+ *   则可以使用Box。
+ */
 
 /**
  * Create by Yang Yang on 2023/5/30
