@@ -1,4 +1,4 @@
-package com.yang.study_compose.ui.theme.activity
+package com.yang.study_compose.ui.activity
 
 import android.os.Bundle
 import android.widget.Toast

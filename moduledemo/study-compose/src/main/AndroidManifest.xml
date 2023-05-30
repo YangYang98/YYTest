@@ -10,34 +10,34 @@
         android:theme="@style/Theme.JetPack">
 
         <activity
-            android:name=".ui.theme.activity.FrameLayoutActivity"
+            android:name=".ui.activity.FrameLayoutActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.LinearLayoutActivity"
+            android:name=".ui.activity.LinearLayoutActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.CommonLayoutViewActivity"
+            android:name=".ui.activity.CommonLayoutViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.DialogViewActivity"
+            android:name=".ui.activity.DialogViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.SelectorViewActivity"
+            android:name=".ui.activity.SelectorViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.ButtonViewActivity"
+            android:name=".ui.activity.ButtonViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.ImageViewActivity"
+            android:name=".ui.activity.ImageViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.EditTextActivity"
+            android:name=".ui.activity.EditTextActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.TextViewActivity"
+            android:name=".ui.activity.TextViewActivity"
             android:exported="false"/>
         <activity
-            android:name=".ui.theme.activity.CommonBaseViewActivity"
+            android:name=".ui.activity.CommonBaseViewActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
