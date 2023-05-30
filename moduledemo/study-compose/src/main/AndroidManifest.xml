@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPack">
         <activity
+            android:name=".ui.theme.activity.DialogViewActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.theme.activity.SelectorViewActivity"
             android:exported="false"/>
         <activity

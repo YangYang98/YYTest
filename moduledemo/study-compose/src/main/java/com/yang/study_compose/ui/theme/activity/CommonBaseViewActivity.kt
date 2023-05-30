@@ -63,6 +63,12 @@ class CommonBaseViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "选择器组件")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonBaseViewActivity, DialogViewActivity::class.java))
+                        }) {
+                            Text(text = "选择器组件")
+                        }
                     }
                 }
             }
