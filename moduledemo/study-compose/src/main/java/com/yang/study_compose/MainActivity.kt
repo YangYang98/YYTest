@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.yang.study_compose.ui.theme.JetPackTheme
 import com.yang.study_compose.ui.theme.activity.CommonBaseViewActivity
+import com.yang.study_compose.ui.theme.activity.CommonLayoutViewActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +59,12 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, CommonBaseViewActivity::class.java))
                         }) {
                             Text(text = "常用基础组件")
+                        }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@MainActivity, CommonLayoutViewActivity::class.java))
+                        }) {
+                            Text(text = "常用布局组件")
                         }
                     }
                 }
