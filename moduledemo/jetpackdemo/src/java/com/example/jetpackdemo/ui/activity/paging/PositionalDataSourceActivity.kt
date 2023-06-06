@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jetpackdemo.R
+import java.com.example.jetpackdemo.ui.effectfactory.SpringEdgeEffect
 
 
 /**
@@ -25,6 +26,7 @@ class PositionalDataSourceActivity: AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.edgeEffectFactory = SpringEdgeEffect()
         val adapter = PositionalPagedListAdapter()
         recyclerView.adapter = adapter
 
