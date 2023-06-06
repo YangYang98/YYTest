@@ -52,7 +52,7 @@ class PositionalPagedListAdapter()
                 title.text = data.title
                 desc.text = data.desc
 
-                Picasso.get().load(data.envelopePic)
+                Picasso.get().load("https://pics4.baidu.com/feed/d439b6003af33a87b2deb4ebffc458345243b530.jpeg@f_auto?token=9466b9e1e1b8ef64da6797bc3905f421")
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .error(R.drawable.ic_launcher_foreground).into(avatar)
             }

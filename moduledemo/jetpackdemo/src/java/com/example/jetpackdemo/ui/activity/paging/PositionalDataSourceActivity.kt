@@ -3,6 +3,7 @@ package java.com.example.jetpackdemo.ui.activity.paging
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jetpackdemo.R
 
@@ -23,6 +24,7 @@ class PositionalDataSourceActivity: AppCompatActivity() {
         setContentView(R.layout.activity_positional_data_source)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = PositionalPagedListAdapter()
         recyclerView.adapter = adapter
 

@@ -4,12 +4,19 @@ package java.com.example.jetpackdemo.ui.activity.paging
 /**
  * Create by Yang Yang on 2023/6/5
  */
+class PositionalResponse {
+    var data: Positionals? = null
+    var errorCode: Int = 0
+    var errorMsg: String? = null
+}
+
 class Positionals {
 
-    var count: Int = 0
-    var start: Int = 0
+
+    var size: Int = 0
+    var curPage: Int = 0
     var total: Int = 0
-    var data: List<Positional>? = null
+    var datas: List<Positional>? = null
 
 
 }

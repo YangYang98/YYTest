@@ -2,6 +2,7 @@ package java.com.example.jetpackdemo.ui.activity.paging
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -10,8 +11,8 @@ import retrofit2.http.Query
  */
 interface PagingModel {
 
-    @GET("/project/list/1/json?cid=294")
+    @GET("/wenda/list/{pageId}/json")
     fun getPositionals(
-        @Query("start") since: Int, @Query("count") count: Int
-    ): Call<Positionals>
+        @Path("pageId") pageId:Int, @Query("count") count: Int
+    ): Call<PositionalResponse>
 }

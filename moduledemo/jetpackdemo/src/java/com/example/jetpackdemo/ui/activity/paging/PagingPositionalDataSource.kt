@@ -18,15 +18,15 @@ class PagingPositionalDataSource : PositionalDataSource<Positional>() {
     override fun loadInitial(params: LoadInitialParams, callback: LoadInitialCallback<Positional>) {
         ApiClient.instance.instanceRetrofit(PagingModel::class.java)
             .getPositionals(0, PER_PAGE)
-            .enqueue(object : Callback<Positionals> {
-                override fun onResponse(call: Call<Positionals>, response: Response<Positionals>) {
+            .enqueue(object : Callback<PositionalResponse> {
+                override fun onResponse(call: Call<PositionalResponse>, response: Response<PositionalResponse>) {
                     if (response.body() != null) {
-                        callback.onResult(response.body()?.data ?: emptyList(), response.body()?.start ?: 0, response.body()?.count ?: 0)
+                        callback.onResult(response.body()?.data?.datas ?: emptyList(), response.body()?.data?.curPage ?: 0, response.body()?.data?.total ?: 0)
                     }
                     Log.e("YANGYANG", response.toString())
                 }
 
-                override fun onFailure(call: Call<Positionals>, t: Throwable) {
+                override fun onFailure(call: Call<PositionalResponse>, t: Throwable) {
                     callback.onResult(emptyList(), 0)
                     Log.e("YANGYANG", "错误")
                 }
@@ -36,15 +36,15 @@ class PagingPositionalDataSource : PositionalDataSource<Positional>() {
 
     override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<Positional>) {
         ApiClient.instance.instanceRetrofit(PagingModel::class.java)
-            .getPositionals(params.startPosition, PER_PAGE)
-            .enqueue(object : Callback<Positionals> {
-                override fun onResponse(call: Call<Positionals>, response: Response<Positionals>) {
+            .getPositionals(params.startPosition / PER_PAGE, PER_PAGE)
+            .enqueue(object : Callback<PositionalResponse> {
+                override fun onResponse(call: Call<PositionalResponse>, response: Response<PositionalResponse>) {
                     if (response.body() != null) {
-                        callback.onResult(response.body()?.data ?: emptyList())
+                        callback.onResult(response.body()?.data?.datas ?: emptyList())
                     }
                 }
 
-                override fun onFailure(call: Call<Positionals>, t: Throwable) {
+                override fun onFailure(call: Call<PositionalResponse>, t: Throwable) {
 
                 }
 
