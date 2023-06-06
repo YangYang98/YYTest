@@ -19,6 +19,7 @@ ext {
     retrofit_version = "2.9.0"
     coroutine_version = "1.6.4"
     compose_version = "1.4.3"
+    constraintlayout_version = "1.0.1"
     work_manager_version = "2.8.1"
 
     libs = [
@@ -37,6 +38,7 @@ ext {
 
             compose_ui: ("androidx.compose.ui:ui:$compose_version"),
             compose_material: ("androidx.compose.material:material:$compose_version"),
+            compose_constraintlayout: ("androidx.constraintlayout:constraintlayout-compose:$constraintlayout_version"),
             compose_ui_tooling_preview: ("androidx.compose.ui:ui-tooling-preview:$compose_version"),
             compose_ui_tooling: ("androidx.compose.ui:ui-tooling:$compose_version"),
             compose_ui_test_mainfest: ("androidx.compose.ui:ui-test-manifest:$compose_version"),

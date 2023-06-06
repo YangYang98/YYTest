@@ -61,4 +61,6 @@ dependencies {
     debugImplementation libs.compose_ui_tooling
     debugImplementation libs.compose_ui_test_mainfest
     androidTestImplementation libs.compose_ui_test_junit4
+
+    implementation libs.compose_constraintlayout
 }

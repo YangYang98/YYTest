@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPack">
 
+
+        <activity
+            android:name=".ui.activity.ConstraintLayoutActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.activity.FrameLayoutActivity"
             android:exported="false"/>

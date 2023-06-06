@@ -45,6 +45,12 @@ class CommonLayoutViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "帧布局")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonLayoutViewActivity, ConstraintLayoutActivity::class.java))
+                        }) {
+                            Text(text = "约束布局")
+                        }
                     }
                 }
             }
