@@ -97,4 +97,15 @@ dependencies {
     debugImplementation libs.compose_ui_test_mainfest
 
     implementation libs.work_manager_runtime
+
+    implementation 'androidx.paging:paging-runtime:3.1.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //retrofit
+    implementation libs.retrofit
+    implementation libs.converter_gson
+    implementation libs.converter_moshi
+    implementation libs.adapter_rxjava2
+    implementation libs.retrofit2_kotlin_coroutines_adapter
 }

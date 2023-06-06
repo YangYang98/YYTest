@@ -1,5 +1,6 @@
 package java.com.example.jetpackdemo.ui.activity.paging
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,6 +17,8 @@ class PagingBaseActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityPagingBaseBinding = DataBindingUtil.setContentView(this, R.layout.activity_paging_base)
 
-
+        binding.btnPagingDataSource.setOnClickListener {
+            startActivity(Intent(this, PositionalDataSourceActivity::class.java))
+        }
     }
 }
