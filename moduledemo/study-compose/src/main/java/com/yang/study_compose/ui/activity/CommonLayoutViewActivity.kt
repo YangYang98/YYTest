@@ -51,6 +51,12 @@ class CommonLayoutViewActivity : ComponentActivity() {
                         }) {
                             Text(text = "约束布局")
                         }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@CommonLayoutViewActivity, ScaffoldActivity::class.java))
+                        }) {
+                            Text(text = "Scaffold脚手架")
+                        }
                     }
                 }
             }
