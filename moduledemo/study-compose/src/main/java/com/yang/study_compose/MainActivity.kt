@@ -41,6 +41,7 @@ import com.yang.study_compose.ui.activity.CommonBaseViewActivity
 import com.yang.study_compose.ui.activity.CommonLayoutViewActivity
 import com.yang.study_compose.ui.activity.CustomUIActivity
 import com.yang.study_compose.ui.activity.RecyclerViewActivity
+import com.yang.study_compose.ui.activity.StateManagerAndRecombineActivity
 import com.yang.study_compose.ui.activity.ThemeActivity
 
 class MainActivity : ComponentActivity() {
@@ -84,6 +85,11 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, ThemeActivity::class.java))
                         }) {
                             Text(text = "主题")
+                        }
+                        Button(onClick = {
+                            startActivity(Intent(this@MainActivity, StateManagerAndRecombineActivity::class.java))
+                        }) {
+                            Text(text = "状态管理与重组")
                         }
                     }
                 }
