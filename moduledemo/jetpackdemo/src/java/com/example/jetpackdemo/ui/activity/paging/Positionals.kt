@@ -27,3 +27,18 @@ class Positional {
     var envelopePic: String? = null
     var desc: String? = null
 }
+
+class PositionalResponse2 {
+    var data: Positionals2? = null
+    var errorCode: Int = 0
+    var errorMsg: String? = null
+}
+
+class Positionals2 {
+
+
+    var hasMore: Boolean = true
+    var datas: List<Positional>? = null
+
+
+}

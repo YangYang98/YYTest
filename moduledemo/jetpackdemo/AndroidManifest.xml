@@ -181,6 +181,10 @@
         <activity android:name="java.com.example.jetpackdemo.ui.activity.paging.PositionalDataSourceActivity"
             android:exported="false"
             />
+
+        <activity android:name="java.com.example.jetpackdemo.ui.activity.paging.PageKeyedDataSourceActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
