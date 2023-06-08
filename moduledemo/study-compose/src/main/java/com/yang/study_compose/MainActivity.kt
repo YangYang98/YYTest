@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import com.yang.study_compose.ui.theme.JetPackTheme
 import com.yang.study_compose.ui.activity.CommonBaseViewActivity
 import com.yang.study_compose.ui.activity.CommonLayoutViewActivity
+import com.yang.study_compose.ui.activity.RecyclerViewActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +66,12 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, CommonLayoutViewActivity::class.java))
                         }) {
                             Text(text = "常用布局组件")
+                        }
+
+                        Button(onClick = {
+                            startActivity(Intent(this@MainActivity, RecyclerViewActivity::class.java))
+                        }) {
+                            Text(text = "列表")
                         }
                     }
                 }

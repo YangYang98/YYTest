@@ -10,6 +10,9 @@
         android:theme="@style/Theme.JetPack">
 
         <activity
+            android:name=".ui.activity.RecyclerViewActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.activity.ScaffoldActivity"
             android:exported="false"/>
         <activity
