@@ -31,20 +31,45 @@ class StateManagerActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            CounterComponent()
+            CounterScreen()
         }
     }
 }
 
 @Composable
-fun CounterComponent() {
+fun CounterScreen() {
+
+    /**
+     * TODO 状态上提最佳实践
+     *
+     * 当为了方便Composable共享而上提状态时，应该将状态上提到这几个Composable的最小共同父Composable。
+     * 实现共享的同时，避免Scope无意义的扩大。
+     */
+
+    var counter by remember {
+        mutableStateOf(0)
+    }
+
+    CounterComponent(
+        counter = counter, { counter++ }
+    ) {
+        if (counter > 0) {
+            counter --
+        }
+    }
+}
+
+
+@Composable
+fun CounterComponent(
+    counter: Int,
+    onIncrement: () -> Unit,
+    onDecrement: () -> Unit
+) {
 
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
-        var counter by remember {
-            mutableStateOf(0)
-        }
 
         Text(text = "Click buttons to adjust your value:")
 
@@ -57,7 +82,7 @@ fun CounterComponent() {
 
         Row {
             Button(
-                onClick = { counter-- },
+                onClick = onDecrement,
                 modifier = Modifier.weight(1f)
             ) {
                 Text(text = "-")
@@ -66,7 +91,7 @@ fun CounterComponent() {
             Spacer(modifier = Modifier.width(16.dp))
 
             Button(
-                onClick = { counter++ },
+                onClick = onIncrement,
                 modifier = Modifier.weight(1f)
             ) {
                 Text(text = "+")
