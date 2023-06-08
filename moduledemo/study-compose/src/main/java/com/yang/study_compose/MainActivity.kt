@@ -41,6 +41,7 @@ import com.yang.study_compose.ui.activity.CommonBaseViewActivity
 import com.yang.study_compose.ui.activity.CommonLayoutViewActivity
 import com.yang.study_compose.ui.activity.CustomUIActivity
 import com.yang.study_compose.ui.activity.RecyclerViewActivity
+import com.yang.study_compose.ui.activity.ThemeActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +79,11 @@ class MainActivity : ComponentActivity() {
                             startActivity(Intent(this@MainActivity, CustomUIActivity::class.java))
                         }) {
                             Text(text = "定制UI视图")
+                        }
+                        Button(onClick = {
+                            startActivity(Intent(this@MainActivity, ThemeActivity::class.java))
+                        }) {
+                            Text(text = "主题")
                         }
                     }
                 }

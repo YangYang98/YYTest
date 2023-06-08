@@ -10,6 +10,9 @@
         android:theme="@style/Theme.JetPack">
 
         <activity
+            android:name=".ui.activity.ThemeActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.activity.CustomUIActivity"
             android:exported="false"/>
         <activity
