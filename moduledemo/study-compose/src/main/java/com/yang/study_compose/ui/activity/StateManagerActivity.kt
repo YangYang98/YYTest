@@ -3,6 +3,7 @@ package com.yang.study_compose.ui.activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +16,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,6 +52,8 @@ class StateManagerActivity : ComponentActivity() {
                 CounterScreen2()
 
                 CounterScreen3()
+
+                CounterScreen4()
             }
         }
     }
@@ -243,4 +247,55 @@ object CitySaver : Saver<City, Bundle> {
         }
     }
 
+}
+
+
+
+
+class CounterState(initial: Int) {
+
+    companion object {
+        /**
+         * The default [Saver] implementation for [ScrollState].
+         */
+        val Saver: Saver<CounterState, *> = Saver(
+            save = { it._counter.value },
+            restore = { CounterState(it) }
+        )
+    }
+
+    private val _counter = mutableStateOf(0)
+    val counter: State<Int> get() = _counter
+
+    fun increment() {
+        _counter.value = _counter.value + 1
+    }
+
+    fun decrement() {
+        if (_counter.value > 0) {
+            _counter.value = _counter.value - 1
+        }
+    }
+}
+
+@Composable
+fun rememberCounterState(initial: Int = 0): CounterState {
+    return rememberSaveable(saver = CounterState.Saver) {
+        CounterState(initial = initial)
+    }
+}
+
+@Composable
+fun CounterScreen4() {
+
+    Column {
+
+        Text(text = "StateHolder")
+        val counterState: CounterState = rememberCounterState()
+        CounterComponent(
+            counter = counterState.counter.value,
+            counterState::increment,
+            counterState::decrement
+        )
+    }
 }
