@@ -43,6 +43,7 @@ ext {
             compose_ui_tooling: ("androidx.compose.ui:ui-tooling:$compose_version"),
             compose_ui_test_mainfest: ("androidx.compose.ui:ui-test-manifest:$compose_version"),
             compose_ui_test_junit4: ("androidx.compose.ui:ui-test-junit4:$compose_version"),
+            compose_viewmodel: ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"),
 
             work_manager_runtime: ("androidx.work:work-runtime-ktx:$work_manager_version"),
     ]

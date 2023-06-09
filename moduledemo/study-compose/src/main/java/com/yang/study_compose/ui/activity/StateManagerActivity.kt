@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -25,7 +27,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.yang.study_compose.data.City
+import com.yang.study_compose.model.CounterViewModel
 
 
 /**
@@ -38,10 +42,14 @@ class StateManagerActivity : ComponentActivity() {
 
         setContent {
 
-            Column {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState())
+            ) {
                 CounterScreen()
 
                 CounterScreen2()
+
+                CounterScreen3()
             }
         }
     }
@@ -57,17 +65,22 @@ fun CounterScreen() {
      * 实现共享的同时，避免Scope无意义的扩大。
      */
 
-    var counter by remember {
-        mutableStateOf(0)
-    }
+    Column {
 
-    CounterComponent(
-        counter = counter, { counter++ }
-    ) {
-        if (counter > 0) {
-            counter --
+        Text(text = "状态上提")
+        var counter by remember {
+            mutableStateOf(0)
+        }
+
+        CounterComponent(
+            counter = counter, { counter++ }
+        ) {
+            if (counter > 0) {
+                counter --
+            }
         }
     }
+
 }
 
 @Composable
@@ -81,19 +94,47 @@ fun CounterScreen2() {
      * 能跨越Activity或者跨越进程存在。比如当横竖屏等ConfigurationChanged事件发生时，状态会发生丢失。
      */
 
-    var counter by rememberSaveable {
-        mutableStateOf(0)
-    }
+    Column {
 
-    CounterComponent(
-        counter = counter, { counter++ }
-    ) {
-        if (counter > 0) {
-            counter --
+        Text(text = "rememberSavable自动保存状态")
+        var counter by rememberSaveable {
+            mutableStateOf(0)
+        }
+
+        CounterComponent(
+            counter = counter, { counter++ }
+        ) {
+            if (counter > 0) {
+                counter --
+            }
         }
     }
+}
 
+@Composable
+fun CounterScreen3() {
 
+    /**
+     * TODO viewModel()
+     *
+     * viewModel()会从当前最近的ViewModelStore中获取ViewModel实例，
+     * 这个ViewModelStore可能是一个Activity，也可能是一个Fragment。
+     * 如果ViewModel不存在，就创建一个新的并存入ViewModelStore。
+     * 只要ViewModelStore不销毁，其内部的ViewModel将一直存活。
+     * ex: 例如一个Activity中的Composable通过viewModel()创建的ViewModel被当前的Activity持有。
+     *      在Activity销毁之前，ViewModel将一直存在，viewModel()每次调用将返回同一个实例，所以此时可以不使用remember进行缓存。
+     */
+
+    Column {
+        
+        Text(text = "ViewModel管理状态")
+        val counterViewModel: CounterViewModel = viewModel()
+        CounterComponent(
+            counter = counterViewModel.counter.value,
+            counterViewModel::increment,
+            counterViewModel::decrement
+        )
+    }
 }
 
 
