@@ -22,7 +22,7 @@ class Positionals {
 }
 
 class Positional {
-
+    var id: Int = 0
     var title: String? = null
     var envelopePic: String? = null
     var desc: String? = null

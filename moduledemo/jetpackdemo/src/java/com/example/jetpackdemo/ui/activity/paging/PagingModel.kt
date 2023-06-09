@@ -20,4 +20,9 @@ interface PagingModel {
     fun getPositionals2(
         @Path("pageId") pageId:Int, @Query("count") count: Int
     ): Call<PositionalResponse2>
+
+    @GET("/wenda/list/{pageId}/json")
+    fun getPositionals3(
+        @Path("pageId") pageId:Int, @Query("count") count: Int
+    ): Call<PositionalResponse2>
 }
