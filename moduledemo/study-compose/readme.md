@@ -14,3 +14,19 @@ Column中读取counter的值并传给Text显示。当单击Button后，counter�
 remember{}可以帮我们解决这个问题。在Composable首次执行时，remember中计算得到的数据会自动缓存，
 当Composable重组再次执行到remember处会返回之前已缓存的数据，无须重新计算。
 remember的这一特性非常重要，让一个函数式组件像一个面向对象组件一样持有自己的“成员变量”。
+
+
+/*********** 重组 ****************/
+最佳实践：
+存在于for循环中的Composable，建议为每个item使用key添加唯一索引，将有助于数量变化时的重组性能。
+ex:
+@Composable
+fun MoviesScreen(movies: List<Movie>) {
+    Column {
+        for (movie in movies) {
+            key(movie.id) { //使用Movie的唯一id作为Composable的索引
+            MovieOverview(movie)
+            }
+        }
+    }
+}

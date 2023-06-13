@@ -10,6 +10,10 @@
         android:theme="@style/Theme.JetPack">
 
         <activity
+            android:name=".ui.activity.RecombineActivity"
+            android:exported="false"/>
+
+        <activity
             android:name=".ui.activity.StateManagerActivity"
             android:exported="false"/>
         <activity

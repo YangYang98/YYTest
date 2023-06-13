@@ -43,7 +43,7 @@ class StateManagerAndRecombineActivity : ComponentActivity() {
                         }
 
                         Button(onClick = {
-                            //startActivity(Intent(this@StateManagerAndRecombineActivity, CommonLayoutViewActivity::class.java))
+                            startActivity(Intent(this@StateManagerAndRecombineActivity, RecombineActivity::class.java))
                         }) {
                             Text(text = "重组")
                         }
