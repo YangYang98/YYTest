@@ -28,5 +28,9 @@ class PagingBaseActivity: AppCompatActivity() {
         binding.btnItemKeyedDataSource.setOnClickListener {
             startActivity(Intent(this, ItemKeyedDataSourceActivity::class.java))
         }
+
+        binding.btnBoundaryCallback.setOnClickListener {
+            startActivity(Intent(this, BoundaryCallbackActivity::class.java))
+        }
     }
 }

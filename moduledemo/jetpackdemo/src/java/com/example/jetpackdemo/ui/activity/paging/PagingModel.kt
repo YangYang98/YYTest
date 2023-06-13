@@ -4,6 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.com.example.jetpackdemo.data.ArticleResponse
 
 
 /**
@@ -25,4 +26,9 @@ interface PagingModel {
     fun getPositionals3(
         @Path("pageId") pageId:Int, @Query("count") count: Int
     ): Call<PositionalResponse2>
+
+    @GET("/article/list/{pageId}/json")
+    fun getArticles(
+        @Path("pageId") pageId:Int
+    ): Call<ArticleResponse>
 }
