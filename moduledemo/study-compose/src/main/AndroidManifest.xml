@@ -10,6 +10,9 @@
         android:theme="@style/Theme.JetPack">
 
         <activity
+            android:name=".ui.activity.customer.CustomerActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.activity.RecombineActivity"
             android:exported="false"/>
 
