@@ -3,6 +3,7 @@ package java.com.example.jetpackdemo.listener
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import java.com.example.jetpackdemo.lifecycle.LifecycleBaseActivity
 import java.com.example.jetpackdemo.ui.activity.*
 import java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationBaseActivity
@@ -15,6 +16,10 @@ import java.com.example.jetpackdemo.ui.activity.wrokmanager.WorkManagerBaseActiv
  * Create by Yang Yang on 2023/4/19
  */
 class EventHandleListener constructor(val context: Context) {
+
+    fun btnLifecycleBaseOnClick(view: View) {
+        context.startActivity(Intent(context, LifecycleBaseActivity::class.java))
+    }
 
     fun btnDataBindingBaseOnClick(view: View) {
 

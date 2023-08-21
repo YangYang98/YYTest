@@ -8,6 +8,7 @@ class Config {
 
     var baseName = "Base"
     var jetpackBaseName = "JetpackBaseName"
+    var lifecycleBase = "lifecycleBase"
     var dataBindingBase = "DataBindingBase"
     var roomBase = "RoomBase"
     var navigationBase = "NavigationBase"

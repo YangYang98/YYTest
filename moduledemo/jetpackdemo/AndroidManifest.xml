@@ -191,6 +191,12 @@
         <activity android:name="java.com.example.jetpackdemo.ui.activity.paging.BoundaryCallbackActivity"
             android:exported="false"
             />
+        <activity android:name="java.com.example.jetpackdemo.lifecycle.LifecycleBaseActivity"
+            android:exported="false"
+            />
+        <activity android:name="java.com.example.jetpackdemo.lifecycle.AdvertisingActivity"
+            android:exported="false"
+            />
     </application>
 
 </manifest>
