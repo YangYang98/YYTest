@@ -9,12 +9,12 @@ import androidx.lifecycle.LifecycleOwner
 /**
  * Create by Yang Yang on 2023/8/21
  */
-class AdvertisingManage: DefaultLifecycleObserver {
+class AdvertisingManage(millsInFuture: Long): DefaultLifecycleObserver {
     var TAG = "AdvertisingManage"
     //监听事件
     var advertisingManageListener: AdvertisingManageListener? = null
     //定时器
-    private var countDownTimer: CountDownTimer? = object : CountDownTimer(5000, 1000){
+    private var countDownTimer: CountDownTimer? = object : CountDownTimer(millsInFuture, 1000){
         override fun onTick(millisUntilFinished: Long) {
             Log.d(TAG, "广告剩余${(millisUntilFinished / 1000).toInt()}秒")
             advertisingManageListener?.timing((millisUntilFinished / 1000).toInt())
