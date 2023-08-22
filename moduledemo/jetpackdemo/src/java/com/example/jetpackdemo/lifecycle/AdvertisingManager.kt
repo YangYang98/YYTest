@@ -4,24 +4,25 @@ import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import java.com.example.jetpackdemo.model.AdvertisingViewModel
 
 
 /**
  * Create by Yang Yang on 2023/8/21
  */
-class AdvertisingManage(millsInFuture: Long): DefaultLifecycleObserver {
+class AdvertisingManage(advertisingViewModel: AdvertisingViewModel): DefaultLifecycleObserver {
     var TAG = "AdvertisingManage"
-    //监听事件
-    var advertisingManageListener: AdvertisingManageListener? = null
     //定时器
-    private var countDownTimer: CountDownTimer? = object : CountDownTimer(millsInFuture, 1000){
+    private var countDownTimer: CountDownTimer? = object : CountDownTimer(advertisingViewModel.millsInFuture, 1000){
         override fun onTick(millisUntilFinished: Long) {
             Log.d(TAG, "广告剩余${(millisUntilFinished / 1000).toInt()}秒")
-            advertisingManageListener?.timing((millisUntilFinished / 1000).toInt())
+            advertisingViewModel.apply {
+                millsInFuture = millisUntilFinished
+                setTimingResult(millisUntilFinished / 1000)
+            }
         }
         override fun onFinish() {
             Log.d(TAG, "广告结束，准备进入主页面")
-            advertisingManageListener?.enterMainActivity()
         }
     }
     /**
@@ -38,20 +39,6 @@ class AdvertisingManage(millsInFuture: Long): DefaultLifecycleObserver {
         Log.d(TAG, "停止计时")
         countDownTimer?.cancel()
         countDownTimer = null
-    }
-    /**
-     *广告管理接口
-     */
-    interface AdvertisingManageListener {
-        /**
-         * 计时
-         * @param second秒
-         */
-        fun timing(second: Int)
-        /**
-         * 计时结束, 进入主页面
-         */
-        fun enterMainActivity()
     }
 
     override fun onStart(owner: LifecycleOwner) {

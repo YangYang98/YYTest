@@ -21,23 +21,21 @@ class AdvertisingActivity: AppCompatActivity() {
 
         val binding: ActivityAdvertisingBinding = DataBindingUtil.setContentView(this, R.layout.activity_advertising)
 
-        val advertisingManage = AdvertisingManage(advertisingViewModel.millsInFuture)
+        val advertisingManage = AdvertisingManage(advertisingViewModel)
         lifecycle.addObserver(advertisingManage)
         
         val btnIgnore = binding.tvIgnore
-        advertisingManage.advertisingManageListener = object : AdvertisingManage.AdvertisingManageListener {
-            override fun timing(second: Int) {
-                advertisingViewModel.millsInFuture = second.toLong() * 1000
-                btnIgnore.text = "广告剩余${second}秒"
-            }
-
-            override fun enterMainActivity() {
-                finish()
-            }
-        }
 
         btnIgnore.setOnClickListener {
             finish()
+        }
+
+        advertisingViewModel._timingResult.observe(this) {
+            btnIgnore.text = "广告剩余${it}秒"
+
+            if (it == 0L) {
+                finish()
+            }
         }
     }
 }

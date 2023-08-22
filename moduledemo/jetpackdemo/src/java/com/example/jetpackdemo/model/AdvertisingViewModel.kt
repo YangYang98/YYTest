@@ -1,5 +1,6 @@
 package java.com.example.jetpackdemo.model
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 
@@ -9,4 +10,12 @@ import androidx.lifecycle.ViewModel
 class AdvertisingViewModel: ViewModel() {
 
     var millsInFuture: Long = 5000
+
+    private var timingResult = MutableLiveData<Long>()
+    val _timingResult
+        get() = timingResult
+
+    fun setTimingResult(millsInFuture: Long) {
+        timingResult.value = millsInFuture
+    }
 }
