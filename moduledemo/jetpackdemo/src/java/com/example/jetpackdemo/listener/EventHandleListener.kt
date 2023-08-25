@@ -4,7 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import java.com.example.jetpackdemo.lifecycle.LifecycleBaseActivity
-import java.com.example.jetpackdemo.ui.activity.*
+import java.com.example.jetpackdemo.livedata.LiveDataBaseActivity
+import java.com.example.jetpackdemo.ui.activity.DBAndVMAndLDDemoActivity
+import java.com.example.jetpackdemo.ui.activity.DataBindingBaseActivity
+import java.com.example.jetpackdemo.ui.activity.RecycleViewBindingActivity
+import java.com.example.jetpackdemo.ui.activity.TwoWayBinding2Activity
+import java.com.example.jetpackdemo.ui.activity.TwoWayBindingActivity
 import java.com.example.jetpackdemo.ui.activity.compose.ComposeBaseActivity
 import java.com.example.jetpackdemo.ui.activity.navigation.NavigationBaseActivity
 import java.com.example.jetpackdemo.ui.activity.paging.PagingBaseActivity
@@ -60,5 +65,9 @@ class EventHandleListener constructor(val context: Context) {
 
     fun btnPagingOnClick(view: View) {
         context.startActivity(Intent(context, PagingBaseActivity::class.java))
+    }
+
+    fun btnLiveDataOnClick(view: View) {
+        context.startActivity(Intent(context, LiveDataBaseActivity::class.java))
     }
 }

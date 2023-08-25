@@ -16,4 +16,5 @@ class Config {
     var composeName = "Compose Study"
     var workManagerName = "WorkManagerBase"
     var pagingName = "PagingBase"
+    var liveDataName = "LiveDataBase"
 }

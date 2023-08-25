@@ -78,5 +78,13 @@
             android:onClick="@{eventHandle.btnPagingOnClick}"
             />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@{StringUtils.test(config.liveDataName)}"
+            android:onClick="@{eventHandle.btnLiveDataOnClick}"
+            />
+
     </LinearLayout>
 </layout>
