@@ -109,4 +109,6 @@ dependencies {
     implementation libs.converter_moshi
     implementation libs.adapter_rxjava2
     implementation libs.retrofit2_kotlin_coroutines_adapter
+
+    implementation 'com.kunminx.arch:unpeek-livedata:7.8.0'
 }

@@ -42,5 +42,9 @@ class MainActivity : BaseActivity2() {
         findViewById<Button>(R.id.btn_flow).setOnClickListener {
             startActivity(Intent(this, FlowActivity::class.java))
         }
+
+        findViewById<Button>(R.id.btn_test_coroutine).setOnClickListener {
+            startActivity(Intent(this, TestCoroutineActivity::class.java))
+        }
     }
 }

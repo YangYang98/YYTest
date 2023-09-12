@@ -8,6 +8,9 @@
       <entry key="moduledemo.study-compose">
         <State />
       </entry>
+      <entry key="moduledemo.study-coroutine">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
