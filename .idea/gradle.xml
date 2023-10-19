@@ -9,6 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/lib_algo" />
+            <option value="$PROJECT_DIR$/lib_algo/studyAlgo" />
             <option value="$PROJECT_DIR$/moduledemo" />
             <option value="$PROJECT_DIR$/moduledemo/app" />
             <option value="$PROJECT_DIR$/moduledemo/changeskin" />
