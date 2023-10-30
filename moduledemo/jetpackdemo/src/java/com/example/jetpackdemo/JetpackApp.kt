@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import dagger.hilt.android.HiltAndroidApp
 import java.com.example.jetpackdemo.data.hilt.ITestHilt
+import java.com.example.jetpackdemo.data.hilt.TestHilt2
 import javax.inject.Inject
 
 
@@ -19,12 +20,17 @@ class JetpackApp: Application() {
     @Inject
     lateinit var testHilt: ITestHilt
 
+    @Inject
+    lateinit var testHilt2: TestHilt2
+
     override fun onCreate() {
         super.onCreate()
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(ApplicationLifecycleObserver())
 
         testHilt.printName()
+
+        testHilt2.printName()
     }
 
     inner class ApplicationLifecycleObserver: DefaultLifecycleObserver {
