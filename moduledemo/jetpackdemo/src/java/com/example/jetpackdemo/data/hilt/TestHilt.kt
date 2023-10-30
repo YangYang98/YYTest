@@ -15,3 +15,9 @@ class TestHilt @Inject constructor(): ITestHilt{
         Log.e("YANGYANG", "name is:${name}")
     }
 }
+
+class TestHilt3 @Inject constructor() : ITestHilt {
+    override fun printName() {
+        Log.e("YANGYANG", "name is:TestHilt3")
+    }
+}

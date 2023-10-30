@@ -4,6 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 
 
 /**
@@ -14,5 +15,18 @@ import dagger.hilt.components.SingletonComponent
 abstract class TestHiltModule {
 
     @Binds
+    @ITestHilt1
     abstract fun bindTestHilt(impl: TestHilt): ITestHilt
+
+    @Binds
+    @ITestHilt2
+    abstract fun bindTestHilt3(impl: TestHilt3): ITestHilt
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ITestHilt1
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class ITestHilt2

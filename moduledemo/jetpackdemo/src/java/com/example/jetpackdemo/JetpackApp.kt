@@ -7,6 +7,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import dagger.hilt.android.HiltAndroidApp
 import java.com.example.jetpackdemo.data.hilt.ITestHilt
+import java.com.example.jetpackdemo.data.hilt.ITestHilt1
+import java.com.example.jetpackdemo.data.hilt.ITestHilt2
 import java.com.example.jetpackdemo.data.hilt.TestHilt2
 import javax.inject.Inject
 
@@ -18,7 +20,12 @@ import javax.inject.Inject
 class JetpackApp: Application() {
 
     @Inject
-    lateinit var testHilt: ITestHilt
+    @ITestHilt1
+    lateinit var iTestHilt1: ITestHilt
+
+    @Inject
+    @ITestHilt2
+    lateinit var iTestHilt2: ITestHilt
 
     @Inject
     lateinit var testHilt2: TestHilt2
@@ -28,7 +35,8 @@ class JetpackApp: Application() {
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(ApplicationLifecycleObserver())
 
-        testHilt.printName()
+        iTestHilt1.printName()
+        iTestHilt2.printName()
 
         testHilt2.printName()
     }
