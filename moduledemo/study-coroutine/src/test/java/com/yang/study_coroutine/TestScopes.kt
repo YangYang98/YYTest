@@ -5,7 +5,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -74,7 +78,7 @@ fun main2() {
     Thread.sleep(100)
 }
 
-fun main() {
+fun main3() {
     runBlocking {
         val start = System.currentTimeMillis()
         val flow1 = flow {
@@ -91,6 +95,29 @@ fun main() {
             val end = System.currentTimeMillis()
             println("a + b : $it")
             println("Time cost: ${end - start}ms")
+        }
+    }
+}
+
+fun main() {
+    //TODO retry(2)函数只有程序在错误或异常的时候尝试重新执行创建者，没有异常还是只执行一次
+    val flow = flow {
+        for (i in 1..5) {
+            delay(100)
+            emit(i)
+            //if (i == 3) throw RuntimeException("自定义错误")
+        }
+    }.retry(2).onStart {
+        println("onStart")
+    }.onCompletion { exception ->
+        println("onCompletion: $exception")
+    }.catch { exception ->
+        println("catch: $exception")
+    }
+
+    runBlocking {
+        flow.collect { v ->
+            println(v.toString())
         }
     }
 }
