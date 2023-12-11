@@ -3,6 +3,8 @@ package com.yang.study_coroutine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.catch
@@ -99,7 +101,7 @@ fun main3() {
     }
 }
 
-fun main() {
+fun main4() {
     //TODO retry(2)函数只有程序在错误或异常的时候尝试重新执行创建者，没有异常还是只执行一次
     val flow = flow {
         for (i in 1..5) {
@@ -118,6 +120,32 @@ fun main() {
     runBlocking {
         flow.collect { v ->
             println(v.toString())
+        }
+    }
+}
+
+fun main() {
+    runBlocking {
+        val channel = Channel<Int>(3, BufferOverflow.SUSPEND)
+
+        launch {
+            for (x in 1..10) {
+                println("Sending $x")
+                channel.send(x)
+                //println("channel Size: ${channel.queue}")
+            }
+            // 关闭Channel
+            channel.close()
+        }
+
+        launch {
+            // 从Channel接收数据并打印
+            for (y in channel) {
+                delay(1000)
+                println("Receiving $y")
+            }
+            // 当Channel关闭时退出循环
+            println("Done!")
         }
     }
 }
